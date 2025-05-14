@@ -32,4 +32,10 @@ public class Rol {
     public Rol() {
     }
 
+    public Rol(Long id, String nombre, List<Usuario> usuarios) {
+        this.id = id;
+        this.nombre = nombre;
+        this.usuarios = usuarios;
+    }
+
 }

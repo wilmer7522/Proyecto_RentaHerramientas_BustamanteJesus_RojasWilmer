@@ -42,6 +42,9 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Cliente cliente;
 
+    public Usuario() {
+    }
+
     public Usuario(Long id, String correo, String password, Rol rol, Admin administrador, Proveedor proveedor,
             Cliente cliente) {
         this.id = id;

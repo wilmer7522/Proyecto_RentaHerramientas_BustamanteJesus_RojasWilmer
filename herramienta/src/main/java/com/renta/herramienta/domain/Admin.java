@@ -28,4 +28,13 @@ public class Admin {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
+    public Admin() {
+    }
+
+    public Admin(Long id, String nombre, Usuario usuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.usuario = usuario;
+    }
+
 }

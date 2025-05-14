@@ -32,4 +32,17 @@ public class Proveedor {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
+    public Proveedor() {
+    }
+
+    public Proveedor(Long id, String nombre, String telefono, String direccion, String nit, Usuario usuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.nit = nit;
+        this.usuario = usuario;
+    }
+
+    
 }
