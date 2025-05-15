@@ -36,6 +36,10 @@ public class Herramienta {
     @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria_Herramienta categoria_Herramienta;
 
+    @ManyToOne
+    @JoinColumn(name = "id_reserva", nullable = false)
+    private Reserva reserva;
+
     public Herramienta() {}
 
     public Herramienta(Long id, String nombre, String descripcion, int costo_dia, boolean disponible,
