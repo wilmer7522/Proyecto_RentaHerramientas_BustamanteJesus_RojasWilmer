@@ -30,7 +30,7 @@ public class Herramienta {
     private boolean disponible;
 
     @Enumerated(EnumType.STRING)
-    private Estado_Herramienta estadoHerramienta;
+    private Estado_Herramienta estado_Herramienta;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
@@ -43,13 +43,13 @@ public class Herramienta {
     public Herramienta() {}
 
     public Herramienta(Long id, String nombre, String descripcion, int costo_dia, boolean disponible,
-            Estado_Herramienta estadoHerramienta, Categoria_Herramienta categoria_Herramienta) {
+            Estado_Herramienta estado_Herramienta, Categoria_Herramienta categoria_Herramienta) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.costo_dia = costo_dia;
         this.disponible = disponible;
-        this.estadoHerramienta = estadoHerramienta;
+        this.estado_Herramienta = estado_Herramienta;
         this.categoria_Herramienta = categoria_Herramienta;
     }
 
