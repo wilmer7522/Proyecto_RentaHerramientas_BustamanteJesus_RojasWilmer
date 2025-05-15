@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +35,14 @@ public class Pago {
     @ManyToOne
     @JoinColumn(name = "id_metodo_pago", nullable = false)
     private Metodo_Pago metodo_Pago;
+
+    @OneToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
+    @OneToOne
+    @JoinColumn(name = "id_alquiler")
+    private Alquiler alquiler;
 
     public Pago() {}
 

@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,9 +27,7 @@ public class Reserva {
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
-    @OneToMany
-    @JoinColumn(name = "id_herramienta", nullable = false)
-    private Herramienta herramienta;
+    
 
     @Column(nullable = false)
     private LocalDateTime fecha_reserva;
@@ -51,7 +48,6 @@ public class Reserva {
             LocalDateTime fecha_inicio, LocalDateTime fecha_fin, Estado_Reserva estado_reserva) {
         this.id = id;
         this.cliente = cliente;
-        this.herramienta = herramienta;
         this.fecha_reserva = fecha_reserva;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;

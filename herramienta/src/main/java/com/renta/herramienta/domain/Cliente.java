@@ -1,13 +1,13 @@
 package com.renta.herramienta.domain;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -37,9 +37,7 @@ public class Cliente {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private Alquiler alquiler;
-
+    
     public Cliente() {
     }
 
@@ -52,7 +50,7 @@ public class Cliente {
         this.direccion = direccion;
         this.cedula = cedula;
         this.usuario = usuario;
-        this.alquiler = alquiler;
+        //this.alquiler = alquiler;
     }
 
 }
