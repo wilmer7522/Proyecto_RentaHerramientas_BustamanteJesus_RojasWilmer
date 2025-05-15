@@ -1,40 +1,41 @@
-package com.renta.herramienta.domain;
+package com.renta.herramienta.domain.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "administrador")
+@Table(name = "rol")
 @Getter
 @Setter
-public class Admin {
+public class Rol {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
     
-    @OneToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
-    private Usuario usuario;
+    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
+    private List<Usuario> usuarios;
 
-    public Admin() {
+    public Rol() {
     }
 
-    public Admin(Long id, String nombre, Usuario usuario) {
+    public Rol(Long id, String nombre, List<Usuario> usuarios) {
         this.id = id;
         this.nombre = nombre;
-        this.usuario = usuario;
+        this.usuarios = usuarios;
     }
 
 }

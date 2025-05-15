@@ -1,4 +1,4 @@
-package com.renta.herramienta.domain;
+package com.renta.herramienta.domain.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

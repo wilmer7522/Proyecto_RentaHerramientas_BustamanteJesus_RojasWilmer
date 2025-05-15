@@ -2,13 +2,21 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PasswordGenerator",
+            "request": "launch",
+            "mainClass": "com.renta.herramienta.infraestructure.utils.PasswordGenerator",
+            "projectName": "herramienta"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-HerramientaApplication<herramienta>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.renta.herramienta.HerramientaApplication",
             "projectName": "herramienta",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=52585 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=herramienta"
         }
     ]
 }

@@ -1,11 +1,10 @@
-package com.renta.herramienta.domain;
+package com.renta.herramienta.domain.entities;
 
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,24 +12,25 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "metodo_pago")
-public class Metodo_Pago {
-
+@Table(name = "categoria_herramienta")
+public class Categoria_Herramienta {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
+    private String descripcion;
 
-    public Metodo_Pago(Long id, String nombre) {
+    public Categoria_Herramienta() {}
+
+    public Categoria_Herramienta(Long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
-    
+   
 
-    public Metodo_Pago() {}
-
-    
     
 }
