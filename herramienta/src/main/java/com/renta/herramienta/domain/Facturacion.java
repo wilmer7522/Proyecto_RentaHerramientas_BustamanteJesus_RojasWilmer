@@ -46,9 +46,6 @@ public class Facturacion {
         this.proveedor = proveedor;
     }
 
-    
-    
-
 
     
 }
