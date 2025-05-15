@@ -1,4 +1,4 @@
-package com.renta.herramienta.domain;
+package com.renta.herramienta.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

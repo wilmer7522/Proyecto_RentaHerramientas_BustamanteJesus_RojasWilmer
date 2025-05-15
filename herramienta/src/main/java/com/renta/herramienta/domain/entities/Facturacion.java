@@ -1,4 +1,4 @@
-package com.renta.herramienta.domain;
+package com.renta.herramienta.domain.entities;
 
 
 import java.time.LocalDateTime;

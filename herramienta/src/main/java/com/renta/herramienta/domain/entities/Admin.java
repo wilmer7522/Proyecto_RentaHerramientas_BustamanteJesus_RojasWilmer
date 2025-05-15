@@ -1,4 +1,4 @@
-package com.renta.herramienta.domain;
+package com.renta.herramienta.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,10 +12,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "proveedor")
+@Table(name = "administrador")
 @Getter
 @Setter
-public class Proveedor {
+public class Admin extends Usuario{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,25 +24,27 @@ public class Proveedor {
     @Column(nullable = false)
     private String nombre;
     
-    private String telefono;
-    private String direccion;
-    private String nit;
-    
     @OneToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    public Proveedor() {
+    public Admin() {
     }
 
-    public Proveedor(Long id, String nombre, String telefono, String direccion, String nit, Usuario usuario) {
+    public Admin(Long id, String nombre, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.nit = nit;
+        this.usuario = usuario;
+    }
+
+    public Admin(Long id, String correo, String password, Rol rol, Admin administrador, Proveedor proveedor,
+            Cliente cliente, Long id2, String nombre, Usuario usuario) {
+        super(id, correo, password, rol, administrador, proveedor, cliente);
+        id = id2;
+        this.nombre = nombre;
         this.usuario = usuario;
     }
 
     
+
 }
