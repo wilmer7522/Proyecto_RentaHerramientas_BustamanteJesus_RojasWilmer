@@ -1,6 +1,6 @@
 package com.renta.herramienta.infraestructure.utils;
 
-/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class PasswordGenerator {
     public static void main(String[] args) {
@@ -9,4 +9,3 @@ public class PasswordGenerator {
         System.out.println("Contraseña cifrada: " + encodedPassword);
     }
 }
-*/

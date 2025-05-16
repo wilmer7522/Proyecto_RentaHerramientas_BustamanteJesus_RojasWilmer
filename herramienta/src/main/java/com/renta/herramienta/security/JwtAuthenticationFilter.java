@@ -1,6 +1,6 @@
 package com.renta.herramienta.security;
 
-/*import java.io.IOException;
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -71,4 +71,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
         filterChain.doFilter(request, response);
     }
 
-}*/
+}

@@ -3,7 +3,7 @@ package com.renta.herramienta.domain.dtos;
 import lombok.Getter;
 import lombok.Setter;
 
-/*@Getter
+@Getter
 @Setter
 public class AuthResponse {
     
@@ -13,4 +13,4 @@ public class AuthResponse {
         this.token = token;
     }
 
-}*/
+}

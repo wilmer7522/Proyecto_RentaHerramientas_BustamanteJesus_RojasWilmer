@@ -1,8 +1,8 @@
-package com.renta.herramienta.infraestructure.utils;
+// package com.renta.herramienta.infraestructure.utils;
 
-/*import java.util.Base64;
+// import java.util.Base64;
 
-import io.jsonwebtoken.SignatureAlgorithm;
+/* import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 public class KeyGenerator {
