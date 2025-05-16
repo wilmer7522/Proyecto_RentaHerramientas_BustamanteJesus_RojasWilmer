@@ -37,14 +37,11 @@ public class Admin extends Usuario{
         this.usuario = usuario;
     }
 
-    public Admin(Long id, String correo, String password, Rol rol, Admin administrador, Proveedor proveedor,
-            Cliente cliente, Long id2, String nombre, Usuario usuario) {
-        super(id, correo, password, rol, administrador, proveedor, cliente);
+    public Admin(Long id, String correo, String password, Rol rol, Long id2, String nombre, Usuario usuario) {
+        super(id, correo, password, rol);
         id = id2;
         this.nombre = nombre;
         this.usuario = usuario;
     }
-
-    
 
 }
