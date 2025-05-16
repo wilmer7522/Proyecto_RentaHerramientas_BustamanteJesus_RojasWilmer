@@ -1,6 +1,5 @@
 package com.renta.herramienta.domain.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,14 +34,14 @@ public class Usuario {
     @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
     
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    /*@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Admin administrador;
     
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Proveedor proveedor;
     
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Cliente cliente;
+    private Cliente cliente;*/
 
     public Usuario() {
     }
@@ -54,9 +52,9 @@ public class Usuario {
         this.correo = correo;
         this.password = password;
         this.rol = rol;
-        this.administrador = administrador;
-        this.proveedor = proveedor;
-        this.cliente = cliente;
+        //this.administrador = administrador;
+        //this.proveedor = proveedor;
+       // this.cliente = cliente;
     }
 
 }

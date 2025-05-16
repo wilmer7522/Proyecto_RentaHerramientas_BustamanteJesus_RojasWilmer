@@ -1,6 +1,6 @@
 package com.renta.herramienta.security;
 
-import java.security.Key;
+/*import java.security.Key;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -54,4 +54,4 @@ public class JwtTokenProvider {
             return false;
         }
     }
-}
+}*/

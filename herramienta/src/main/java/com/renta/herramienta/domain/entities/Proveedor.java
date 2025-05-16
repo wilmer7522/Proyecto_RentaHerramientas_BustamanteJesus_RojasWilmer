@@ -2,11 +2,6 @@ package com.renta.herramienta.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,9 +12,9 @@ import lombok.Setter;
 @Setter
 public class Proveedor extends Usuario{
     
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;*/
     
     @Column(nullable = false)
     private String nombre;
@@ -28,23 +23,23 @@ public class Proveedor extends Usuario{
     private String direccion;
     private String nit;
     
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "id_usuario", nullable = false)
-    private Usuario usuario;
+    private Usuario usuario;*/
 
     public Proveedor() {
     }
 
     public Proveedor(Long id, String nombre, String telefono, String direccion, String nit, Usuario usuario) {
-        this.id = id;
+        //this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
         this.nit = nit;
-        this.usuario = usuario;
+        //this.usuario = usuario;
     }
 
-    public Proveedor(Long id, String correo, String password, Rol rol, Admin administrador, Proveedor proveedor,
+   /*  public Proveedor(Long id, String correo, String password, Rol rol, Admin administrador, Proveedor proveedor,
             Cliente cliente, Long id2, String nombre, String telefono, String direccion, String nit, Usuario usuario) {
         super(id, correo, password, rol, administrador, proveedor, cliente);
         id = id2;
@@ -53,6 +48,6 @@ public class Proveedor extends Usuario{
         this.direccion = direccion;
         this.nit = nit;
         this.usuario = usuario;
-    }
+    }*/
     
 }

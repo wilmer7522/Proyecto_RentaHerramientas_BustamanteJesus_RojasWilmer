@@ -1,18 +1,11 @@
 package com.renta.herramienta.domain.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+/*@Entity
 @Table(name = "cliente")
 @Getter
 @Setter
@@ -66,4 +59,29 @@ public class Cliente extends Usuario{
         this.usuario = usuario;
     }
 
+}*/
+
+@Entity
+@Table(name = "cliente")
+@Getter
+@Setter
+public class Cliente extends Usuario {
+
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String direccion;
+    private String cedula;
+
+    public Cliente() {
+    }
+
+    public Cliente(String nombre, String apellido, String telefono, String direccion, String cedula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.cedula = cedula;
+    }
 }
+

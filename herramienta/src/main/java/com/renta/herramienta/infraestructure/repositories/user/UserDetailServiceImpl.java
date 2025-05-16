@@ -1,6 +1,6 @@
 package com.renta.herramienta.infraestructure.repositories.user;
 
-import java.util.List;
+/*import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -39,4 +39,4 @@ public class UserDetailServiceImpl implements UserDetailsService{
         
     }
     
-}
+}*/
