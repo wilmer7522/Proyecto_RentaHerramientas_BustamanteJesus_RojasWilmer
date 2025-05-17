@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ProveedorService;
 import com.renta.herramienta.domain.dto.ProveedorRequest;
+import com.renta.herramienta.domain.dto.ProveedorUpdateRequest;
 import com.renta.herramienta.domain.entities.Proveedor;
 import com.renta.herramienta.domain.entities.Rol;
 
@@ -76,4 +77,25 @@ public class ProveedorServiceImpl implements ProveedorService {
         return proveedorRepository.save(proveedor);
     }
 
+    @Override
+    @Transactional
+    public Proveedor update(Long id, ProveedorUpdateRequest updates) {
+        Proveedor proveedor = proveedorRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Proveedor no encontrado"));
+
+        if (updates.getNombre() != null) {
+            proveedor.setNombre(updates.getNombre());
+        }
+        if (updates.getTelefono() != null) {
+            proveedor.setTelefono(updates.getTelefono());
+        }
+        if (updates.getDireccion() != null) {
+            proveedor.setDireccion(updates.getDireccion());
+        }
+        if (updates.getNit() != null) {
+            proveedor.setNit(updates.getNit());
+        }
+
+        return proveedorRepository.save(proveedor);
+    }
 }
