@@ -3,7 +3,9 @@ package com.renta.herramienta.aplication.service;
 import java.util.List;
 
 import com.renta.herramienta.domain.dto.ClienteRequest;
+import com.renta.herramienta.domain.dto.ClienteUpdateRequest;
 import com.renta.herramienta.domain.entities.Cliente;
+
 
 
 
@@ -16,6 +18,10 @@ public interface ClienteService {
     public Cliente saveCliente(Cliente cliente);
 
     public Cliente removeCliente(Long id);
+
+    public Cliente updateCliente(Long id, ClienteUpdateRequest clienteUpdateRequest);
+
+
 
     
 

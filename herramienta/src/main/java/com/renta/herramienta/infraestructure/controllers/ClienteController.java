@@ -5,25 +5,25 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.herramienta.aplication.service.ClienteService;
 import com.renta.herramienta.domain.dto.ClienteRequest;
+import com.renta.herramienta.domain.dto.ClienteUpdateRequest;
 import com.renta.herramienta.domain.entities.Cliente;
-import com.renta.herramienta.domain.entities.Proveedor;
 import com.renta.herramienta.domain.entities.Rol;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -83,6 +83,15 @@ public Cliente newCliente(@Valid @RequestBody ClienteRequest clienteRequest) {
         } catch (Exception ex) {
             return ResponseEntity.internalServerError().body("Error interno: " + ex.getMessage());
         }
+    }
+
+    //Patch
+    @PatchMapping("/client/{id}")
+    public ResponseEntity<Cliente> partiallyUpdateCliente(
+            @PathVariable Long id,
+            @RequestBody ClienteUpdateRequest updateCliente) {
+        Cliente clienteActualizado = clienteService.updateCliente(id, updateCliente);
+        return ResponseEntity.ok(clienteActualizado);
     }
 
 
