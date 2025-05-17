@@ -2,6 +2,8 @@ package com.renta.herramienta.domain.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,6 +29,7 @@ public class Rol {
     private String nombre;
     
     @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Usuario> usuarios;
 
     public Rol() {

@@ -83,5 +83,22 @@ public class Cliente extends Usuario {
         this.direccion = direccion;
         this.cedula = cedula;
     }
+
+
+    public Cliente(Long id, String correo, String password, Rol rol, String nombre, String apellido, String telefono,
+            String direccion, String cedula) {
+        super(id, correo, password, rol);
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.cedula = cedula;
+    }
+
+  
+
+    
+
+    
 }
 
