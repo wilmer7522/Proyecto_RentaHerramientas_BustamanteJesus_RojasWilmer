@@ -3,6 +3,8 @@ package com.renta.herramienta.domain.entities;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,6 +36,7 @@ public class Facturacion {
 
     @ManyToOne
     @JoinColumn(name = "id_proveedor", nullable = false)
+    @JsonBackReference
     private Proveedor proveedor;
 
     public Facturacion() {}

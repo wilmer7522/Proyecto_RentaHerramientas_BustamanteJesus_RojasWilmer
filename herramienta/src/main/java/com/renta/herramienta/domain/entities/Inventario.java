@@ -2,6 +2,8 @@ package com.renta.herramienta.domain.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,7 @@ public class Inventario {
 
     @ManyToOne
     @JoinColumn(name = "id_proveedor", nullable = false)
+    @JsonBackReference
     private Proveedor proveedor;
 
 }

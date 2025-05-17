@@ -2,6 +2,8 @@ package com.renta.herramienta.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,6 +35,7 @@ public class Usuario {
     private String password;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "id_rol", nullable = false)
     @JsonBackReference
     private Rol rol;
@@ -42,6 +45,7 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(Long id, String correo, String password, Rol rol) {
     public Usuario(Long id, String correo, String password, Rol rol) {
         this.id = id;
         this.correo = correo;
