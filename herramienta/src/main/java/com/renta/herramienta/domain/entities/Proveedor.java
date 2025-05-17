@@ -38,22 +38,37 @@ public class Proveedor extends Usuario{
     @JsonManagedReference
     private List<Notificacion> notificacion = new ArrayList<>();
 
+    @OneToMany(mappedBy = "proveedor")
+    private List<Aprobacion> aprobaciones;
+
     public Proveedor() {
     }
 
-    public Proveedor(String nombre, String telefono, String direccion, String nit) {
+    public Proveedor(String nombre, String telefono, String direccion, String nit, List<Facturacion> facturas,
+            List<Inventario> inventarios, List<Notificacion> notificacion, List<Aprobacion> aprobaciones) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
         this.nit = nit;
+        this.facturas = facturas;
+        this.inventarios = inventarios;
+        this.notificacion = notificacion;
+        this.aprobaciones = aprobaciones;
     }
 
     public Proveedor(Long id, String correo, String password, Rol rol, String nombre, String telefono, String direccion,
-            String nit) {
+            String nit, List<Facturacion> facturas, List<Inventario> inventarios, List<Notificacion> notificacion,
+            List<Aprobacion> aprobaciones) {
         super(id, correo, password, rol);
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
         this.nit = nit;
-    } 
+        this.facturas = facturas;
+        this.inventarios = inventarios;
+        this.notificacion = notificacion;
+        this.aprobaciones = aprobaciones;
+    }
+
+    
 }

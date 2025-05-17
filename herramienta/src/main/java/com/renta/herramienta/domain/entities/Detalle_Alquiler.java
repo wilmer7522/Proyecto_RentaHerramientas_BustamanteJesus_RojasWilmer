@@ -36,7 +36,7 @@ public class Detalle_Alquiler {
     private double precio_unitario;
 
     @Column(nullable = false)
-    private double subtotal;
+    private double subtotal = precio_unitario * cantidad_dias;
 
     public Detalle_Alquiler() {
     }

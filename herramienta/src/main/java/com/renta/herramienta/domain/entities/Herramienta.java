@@ -1,5 +1,7 @@
 package com.renta.herramienta.domain.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -7,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -36,9 +39,10 @@ public class Herramienta {
     @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria_Herramienta categoria_Herramienta;
 
-    @ManyToOne
-    @JoinColumn(name = "id_reserva", nullable = false)
-    private Reserva reserva;
+    @ManyToMany(mappedBy = "herramientas")
+    private List<Reserva> reservas;
+
+
 
     public Herramienta() {}
 

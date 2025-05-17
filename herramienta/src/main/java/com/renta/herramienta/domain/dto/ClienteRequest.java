@@ -40,7 +40,8 @@ public class ClienteRequest implements Serializable {
     private String password;
    
     @NotNull(message = "El ID del rol es requerido")
-private Long idRol;
+    private Long idRol;
+
 
     
 }
