@@ -15,4 +15,8 @@ public interface ClienteService {
 
     public Cliente saveCliente(Cliente cliente);
 
+    public Cliente removeCliente(Long id);
+
+    
+
 }

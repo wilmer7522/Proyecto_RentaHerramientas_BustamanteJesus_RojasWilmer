@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 import com.renta.herramienta.aplication.service.ClienteService;
 import com.renta.herramienta.domain.dto.ClienteRequest;
 import com.renta.herramienta.domain.entities.Cliente;
+import com.renta.herramienta.domain.entities.Proveedor;
 import com.renta.herramienta.domain.entities.Rol;
+
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -49,6 +53,17 @@ public Cliente createNewCliente(ClienteRequest clienteRequest) {
 
     return clienteRepository.save(cliente);
 }
+
+@Override
+    @Transactional
+    public Cliente removeCliente(Long id) {
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Cliente no encontrado"));
+
+        clienteRepository.delete(cliente);
+        return cliente;
+
+    }
 
 }
 

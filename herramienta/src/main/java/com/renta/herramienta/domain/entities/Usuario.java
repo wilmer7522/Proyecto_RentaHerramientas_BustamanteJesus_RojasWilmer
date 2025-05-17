@@ -37,7 +37,6 @@ public class Usuario {
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "id_rol", nullable = false)
-    @JsonBackReference
     private Rol rol;
     
    
@@ -45,7 +44,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String correo, String password, Rol rol) {
+    
     public Usuario(Long id, String correo, String password, Rol rol) {
         this.id = id;
         this.correo = correo;

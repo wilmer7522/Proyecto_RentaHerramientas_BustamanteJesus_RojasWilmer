@@ -25,7 +25,7 @@ public class ProveedorServiceImpl implements ProveedorService {
     public ProveedorServiceImpl(ProveedorRepository proveedorRepository) {
         this.proveedorRepository = proveedorRepository;
     }
-
+    //Delete
     @Override
     @Transactional
     public Proveedor removeProveedor(Long id) {
