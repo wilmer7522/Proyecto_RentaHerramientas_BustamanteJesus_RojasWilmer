@@ -2,6 +2,10 @@ package com.renta.herramienta.domain.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -20,7 +24,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "herramienta")
 public class Herramienta {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,7 +33,6 @@ public class Herramienta {
     private String descripcion;
     private int costo_dia;
 
-    
     private boolean disponible;
 
     @Enumerated(EnumType.STRING)
@@ -40,11 +43,11 @@ public class Herramienta {
     private Categoria_Herramienta categoria_Herramienta;
 
     @ManyToMany(mappedBy = "herramientas")
+    @JsonBackReference
     private List<Reserva> reservas;
 
-
-
-    public Herramienta() {}
+    public Herramienta() {
+    }
 
     public Herramienta(Long id, String nombre, String descripcion, int costo_dia, boolean disponible,
             Estado_Herramienta estado_Herramienta, Categoria_Herramienta categoria_Herramienta) {
@@ -56,8 +59,5 @@ public class Herramienta {
         this.estado_Herramienta = estado_Herramienta;
         this.categoria_Herramienta = categoria_Herramienta;
     }
-
-    
-
 
 }

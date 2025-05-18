@@ -3,6 +3,7 @@ package com.renta.herramienta.domain.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -39,13 +40,14 @@ public class Proveedor extends Usuario{
     private List<Notificacion> notificacion = new ArrayList<>();
 
     @OneToMany(mappedBy = "proveedor")
-    private List<Aprobacion> aprobaciones;
+    @JsonBackReference
+    private List<Aprobacion> aprobacion;
 
     public Proveedor() {
     }
 
     public Proveedor(String nombre, String telefono, String direccion, String nit, List<Facturacion> facturas,
-            List<Inventario> inventarios, List<Notificacion> notificacion, List<Aprobacion> aprobaciones) {
+            List<Inventario> inventarios, List<Notificacion> notificacion, List<Aprobacion> aprobacion) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -53,12 +55,12 @@ public class Proveedor extends Usuario{
         this.facturas = facturas;
         this.inventarios = inventarios;
         this.notificacion = notificacion;
-        this.aprobaciones = aprobaciones;
+        this.aprobacion = aprobacion;
     }
 
     public Proveedor(Long id, String correo, String password, Rol rol, String nombre, String telefono, String direccion,
             String nit, List<Facturacion> facturas, List<Inventario> inventarios, List<Notificacion> notificacion,
-            List<Aprobacion> aprobaciones) {
+            List<Aprobacion> aprobacion) {
         super(id, correo, password, rol);
         this.nombre = nombre;
         this.telefono = telefono;
@@ -67,7 +69,7 @@ public class Proveedor extends Usuario{
         this.facturas = facturas;
         this.inventarios = inventarios;
         this.notificacion = notificacion;
-        this.aprobaciones = aprobaciones;
+        this.aprobacion = aprobacion;
     }
 
     

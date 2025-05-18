@@ -2,6 +2,8 @@ package com.renta.herramienta.domain.entities;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -22,17 +24,20 @@ public class Aprobacion {
     
     @ManyToOne
     @JoinColumn(name = "id_proveedor")
+    @JsonManagedReference
     private Proveedor proveedor;
     
-    private LocalDate fechaAprobacion;
+    private LocalDate fecha_aprobacion;
     private boolean estado;
 
+    public Aprobacion(){}
 
-    public Aprobacion(Long id, Reserva reserva, Proveedor proveedor, LocalDate fechaAprobacion, boolean estado) {
+
+    public Aprobacion(Long id, Reserva reserva, Proveedor proveedor, LocalDate fecha_aprobacion, boolean estado) {
         this.id = id;
         this.reserva = reserva;
         this.proveedor = proveedor;
-        this.fechaAprobacion = fechaAprobacion;
+        this.fecha_aprobacion = fecha_aprobacion;
         this.estado = estado;
     }
 

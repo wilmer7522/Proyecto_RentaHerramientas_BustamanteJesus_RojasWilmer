@@ -3,6 +3,11 @@ package com.renta.herramienta.domain.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,13 +29,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Reserva {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
+    @JsonManagedReference
     private Cliente cliente;
 
     @ManyToMany
@@ -39,12 +45,11 @@ public class Reserva {
         joinColumns = @JoinColumn(name = "id_reserva"), 
         inverseJoinColumns = @JoinColumn(name = "id_herramienta")
     )
+    
     private List<Herramienta> herramientas;
 
-    @OneToOne(mappedBy = "reserva")
+    @OneToOne(mappedBy = "reserva", cascade = CascadeType.ALL)
     private Aprobacion aprobacion;
-
-    
 
     @Column(nullable = false)
     private LocalDateTime fecha_reserva;
@@ -59,18 +64,17 @@ public class Reserva {
     @Column(nullable = false)
     private Estado_Reserva estado_reserva;
 
-    public Reserva() {
-    }
+    public Reserva() {}
 
-    public Reserva(Long id, Cliente cliente, Herramienta herramienta, LocalDateTime fecha_reserva,
-            LocalDateTime fecha_inicio, LocalDateTime fecha_fin, Estado_Reserva estado_reserva) {
+    public Reserva(Long id, Cliente cliente, List<Herramienta> herramientas, LocalDateTime fecha_reserva,
+                   LocalDateTime fecha_inicio, LocalDateTime fecha_fin, Estado_Reserva estado_reserva) {
         this.id = id;
         this.cliente = cliente;
+        this.herramientas = herramientas;
         this.fecha_reserva = fecha_reserva;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.estado_reserva = estado_reserva;
     }
-
-    
 }
+
