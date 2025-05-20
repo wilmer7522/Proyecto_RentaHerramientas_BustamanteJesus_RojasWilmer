@@ -31,10 +31,12 @@ public class ReservaController {
 
     // 1. Crear una reserva (el cliente)
     @PostMapping("/reserve")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Reserva createNewReserva(@RequestBody ReservaRequest request) {
-        return reservaService.createNewReserva(request);
-    }
+@ResponseStatus(HttpStatus.CREATED)
+public ReservaDTO createNewReserva(@RequestBody ReservaRequest request) {
+    Reserva reserva = reservaService.createNewReserva(request);
+    return ReservaMapper.toReservaDTO(reserva);
+}
+
 
     // 2. Ver todas las reservas de un cliente
     @GetMapping("/all/reserve/cliente/{id}")

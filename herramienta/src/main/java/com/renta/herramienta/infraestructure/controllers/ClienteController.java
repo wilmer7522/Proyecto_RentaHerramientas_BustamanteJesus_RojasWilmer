@@ -1,6 +1,7 @@
 package com.renta.herramienta.infraestructure.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.herramienta.aplication.service.ClienteService;
+import com.renta.herramienta.domain.dto.ClienteDTO;
+import com.renta.herramienta.domain.dto.ClienteMapper;
 import com.renta.herramienta.domain.dto.ClienteRequest;
 import com.renta.herramienta.domain.dto.ClienteUpdateRequest;
 import com.renta.herramienta.domain.entities.Cliente;
@@ -37,47 +40,45 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-
+    // ✅ GET
     @GetMapping("/client")
-    public List<Cliente> findAllClientes(
+    public List<ClienteDTO> findAllClientes(
         @RequestParam(name = "filter", defaultValue = "") String filter,
         @RequestParam(name = "value", defaultValue = "") String value
     ) {
         List<Cliente> results = clienteService.findAllClientesByFilter(filter, value);
-
-        return results;
+        return results.stream().map(ClienteMapper::toDTO).collect(Collectors.toList());
     }
 
-
-
-    //Post
+    // ✅ POST
     @PostMapping("/client")
-@ResponseStatus(HttpStatus.CREATED)
-public Cliente newCliente(@Valid @RequestBody ClienteRequest clienteRequest) {
-    Rol rol = new Rol();
-    rol.setId(clienteRequest.getIdRol());
+    @ResponseStatus(HttpStatus.CREATED)
+    public ClienteDTO newCliente(@Valid @RequestBody ClienteRequest clienteRequest) {
+        Rol rol = new Rol();
+        rol.setId(clienteRequest.getIdRol());
 
-    Cliente cliente = new Cliente(
-        null,
-        clienteRequest.getCorreo(),
-        clienteRequest.getPassword(),
-        rol,
-        clienteRequest.getNombre(),
-        clienteRequest.getApellido(),
-        clienteRequest.getTelefono(),
-        clienteRequest.getDireccion(),
-        clienteRequest.getCedula()
-    );
+        Cliente cliente = new Cliente(
+            null,
+            clienteRequest.getCorreo(),
+            clienteRequest.getPassword(),
+            rol,
+            clienteRequest.getNombre(),
+            clienteRequest.getApellido(),
+            clienteRequest.getTelefono(),
+            clienteRequest.getDireccion(),
+            clienteRequest.getCedula()
+        );
 
-    return clienteService.saveCliente(cliente);
-}
+        Cliente saved = clienteService.saveCliente(cliente);
+        return ClienteMapper.toDTO(saved);
+    }
 
-//Delete 
-@DeleteMapping("/client/{id}")
+    // ✅ DELETE
+    @DeleteMapping("/client/{id}")
     public ResponseEntity<?> removeCliente(@PathVariable Long id) {
         try {
             Cliente eliminado = clienteService.removeCliente(id);
-            return ResponseEntity.ok(eliminado);
+            return ResponseEntity.ok(ClienteMapper.toDTO(eliminado));
         } catch (EntityNotFoundException ex) {
             return ResponseEntity.notFound().build();
         } catch (Exception ex) {
@@ -85,14 +86,13 @@ public Cliente newCliente(@Valid @RequestBody ClienteRequest clienteRequest) {
         }
     }
 
-    //Patch
+    // ✅ PATCH
     @PatchMapping("/client/{id}")
-    public ResponseEntity<Cliente> partiallyUpdateCliente(
+    public ResponseEntity<ClienteDTO> partiallyUpdateCliente(
             @PathVariable Long id,
             @RequestBody ClienteUpdateRequest updateCliente) {
         Cliente clienteActualizado = clienteService.updateCliente(id, updateCliente);
-        return ResponseEntity.ok(clienteActualizado);
+        return ResponseEntity.ok(ClienteMapper.toDTO(clienteActualizado));
     }
-
-
 }
+
