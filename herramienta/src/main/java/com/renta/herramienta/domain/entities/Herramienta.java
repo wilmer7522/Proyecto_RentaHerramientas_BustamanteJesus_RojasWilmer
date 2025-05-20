@@ -3,8 +3,7 @@ package com.renta.herramienta.domain.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -36,11 +35,11 @@ public class Herramienta {
     private boolean disponible;
 
     @Enumerated(EnumType.STRING)
-    private Estado_Herramienta estado_Herramienta;
+    private EstadoHerramienta estadoHerramienta;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
-    private Categoria_Herramienta categoria_Herramienta;
+    private CategoriaHerramienta categoriaHerramienta;
 
     @ManyToMany(mappedBy = "herramientas")
     @JsonBackReference
@@ -50,14 +49,14 @@ public class Herramienta {
     }
 
     public Herramienta(Long id, String nombre, String descripcion, int costo_dia, boolean disponible,
-            Estado_Herramienta estado_Herramienta, Categoria_Herramienta categoria_Herramienta) {
+            EstadoHerramienta estadoHerramienta, CategoriaHerramienta categoriaHerramienta) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.costo_dia = costo_dia;
         this.disponible = disponible;
-        this.estado_Herramienta = estado_Herramienta;
-        this.categoria_Herramienta = categoria_Herramienta;
+        this.estadoHerramienta = estadoHerramienta;
+        this.categoriaHerramienta = categoriaHerramienta;
     }
 
 }

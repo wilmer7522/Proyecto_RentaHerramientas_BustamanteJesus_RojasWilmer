@@ -24,7 +24,7 @@ public class Devolucion {
 
     private LocalDateTime fecha_devolucion;
     @Enumerated(EnumType.STRING)
-    private Estado_Herramienta estado_Herramienta;
+    private EstadoHerramienta estado_Herramienta;
 
     private String observaciones;
 
@@ -32,7 +32,7 @@ public class Devolucion {
 
     public Devolucion() {}
 
-    public Devolucion(Long id, LocalDateTime fecha_devolucion, Estado_Herramienta estado_Herramienta,
+    public Devolucion(Long id, LocalDateTime fecha_devolucion, EstadoHerramienta estado_Herramienta,
             String observaciones, boolean confirmacion_proveedor) {
         this.id = id;
         this.fecha_devolucion = fecha_devolucion;
