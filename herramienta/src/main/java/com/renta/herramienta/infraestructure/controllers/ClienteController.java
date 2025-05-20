@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.herramienta.aplication.service.ClienteService;
 import com.renta.herramienta.domain.dto.ClienteDTO;
-import com.renta.herramienta.domain.dto.ClienteMapper;
-import com.renta.herramienta.domain.dto.ClienteRequest;
-import com.renta.herramienta.domain.dto.ClienteUpdateRequest;
 import com.renta.herramienta.domain.entities.Cliente;
 import com.renta.herramienta.domain.entities.Rol;
+import com.renta.herramienta.domain.mapper.ClienteMapper;
+import com.renta.herramienta.domain.request.ClienteRequest;
+import com.renta.herramienta.domain.request.ClienteUpdateRequest;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -40,7 +40,7 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    // ✅ GET
+    // GET
     @GetMapping("/client")
     public List<ClienteDTO> findAllClientes(
         @RequestParam(name = "filter", defaultValue = "") String filter,
@@ -50,7 +50,7 @@ public class ClienteController {
         return results.stream().map(ClienteMapper::toDTO).collect(Collectors.toList());
     }
 
-    // ✅ POST
+    // POST
     @PostMapping("/client")
     @ResponseStatus(HttpStatus.CREATED)
     public ClienteDTO newCliente(@Valid @RequestBody ClienteRequest clienteRequest) {
@@ -73,7 +73,7 @@ public class ClienteController {
         return ClienteMapper.toDTO(saved);
     }
 
-    // ✅ DELETE
+    // DELETE
     @DeleteMapping("/client/{id}")
     public ResponseEntity<?> removeCliente(@PathVariable Long id) {
         try {
@@ -86,7 +86,7 @@ public class ClienteController {
         }
     }
 
-    // ✅ PATCH
+    // PATCH
     @PatchMapping("/client/{id}")
     public ResponseEntity<ClienteDTO> partiallyUpdateCliente(
             @PathVariable Long id,

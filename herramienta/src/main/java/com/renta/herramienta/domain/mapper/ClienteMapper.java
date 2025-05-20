@@ -1,5 +1,6 @@
-package com.renta.herramienta.domain.dto;
+package com.renta.herramienta.domain.mapper;
 
+import com.renta.herramienta.domain.dto.ClienteDTO;
 import com.renta.herramienta.domain.entities.Cliente;
 
 public class ClienteMapper {

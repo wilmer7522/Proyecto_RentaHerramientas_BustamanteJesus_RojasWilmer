@@ -2,9 +2,9 @@ package com.renta.herramienta.aplication.service;
 
 import java.util.List;
 
-import com.renta.herramienta.domain.dto.ProveedorRequest;
-import com.renta.herramienta.domain.dto.ProveedorUpdateRequest;
 import com.renta.herramienta.domain.entities.Proveedor;
+import com.renta.herramienta.domain.request.ProveedorRequest;
+import com.renta.herramienta.domain.request.ProveedorUpdateRequest;
 
 public interface ProveedorService {
     

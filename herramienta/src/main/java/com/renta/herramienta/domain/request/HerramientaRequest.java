@@ -1,4 +1,4 @@
-package com.renta.herramienta.domain.dto;
+package com.renta.herramienta.domain.request;
 
 import com.renta.herramienta.domain.entities.EstadoHerramienta;
 

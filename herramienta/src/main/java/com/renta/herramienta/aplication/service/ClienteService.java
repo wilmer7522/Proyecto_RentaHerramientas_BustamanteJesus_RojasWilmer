@@ -2,9 +2,9 @@ package com.renta.herramienta.aplication.service;
 
 import java.util.List;
 
-import com.renta.herramienta.domain.dto.ClienteRequest;
-import com.renta.herramienta.domain.dto.ClienteUpdateRequest;
 import com.renta.herramienta.domain.entities.Cliente;
+import com.renta.herramienta.domain.request.ClienteRequest;
+import com.renta.herramienta.domain.request.ClienteUpdateRequest;
 
 
 

@@ -7,10 +7,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ProveedorService;
-import com.renta.herramienta.domain.dto.ProveedorRequest;
-import com.renta.herramienta.domain.dto.ProveedorUpdateRequest;
 import com.renta.herramienta.domain.entities.Proveedor;
 import com.renta.herramienta.domain.entities.Rol;
+import com.renta.herramienta.domain.request.ProveedorRequest;
+import com.renta.herramienta.domain.request.ProveedorUpdateRequest;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;

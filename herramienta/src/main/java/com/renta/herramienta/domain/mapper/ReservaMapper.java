@@ -1,9 +1,12 @@
-package com.renta.herramienta.domain.dto;
+package com.renta.herramienta.domain.mapper;
 
 import java.util.stream.Collectors;
 
+import com.renta.herramienta.domain.dto.HerramientaDTO;
+import com.renta.herramienta.domain.dto.ReservaDTO;
 import com.renta.herramienta.domain.entities.Herramienta;
 import com.renta.herramienta.domain.entities.Reserva;
+import com.renta.herramienta.domain.request.ReservaRequest;
 
 
 public class ReservaMapper {

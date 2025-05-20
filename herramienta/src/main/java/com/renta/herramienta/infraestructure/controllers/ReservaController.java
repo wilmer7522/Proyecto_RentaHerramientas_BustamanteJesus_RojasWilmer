@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.herramienta.aplication.service.ReservaService;
 import com.renta.herramienta.domain.dto.ReservaDTO;
-import com.renta.herramienta.domain.dto.ReservaMapper;
-import com.renta.herramienta.domain.dto.ReservaRequest;
 import com.renta.herramienta.domain.entities.Reserva;
+import com.renta.herramienta.domain.mapper.ReservaMapper;
+import com.renta.herramienta.domain.request.ReservaRequest;
 
 @RestController
 @RequestMapping("/service")

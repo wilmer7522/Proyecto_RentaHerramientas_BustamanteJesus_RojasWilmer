@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ReservaService;
-import com.renta.herramienta.domain.dto.ReservaRequest;
 import com.renta.herramienta.domain.entities.Cliente;
 import com.renta.herramienta.domain.entities.Herramienta;
 import com.renta.herramienta.domain.entities.Reserva;
+import com.renta.herramienta.domain.request.ReservaRequest;
 import com.renta.herramienta.infraestructure.repositories.cliente.ClienteRepository;
 import com.renta.herramienta.infraestructure.repositories.herramienta.HerramientaRepository;
 

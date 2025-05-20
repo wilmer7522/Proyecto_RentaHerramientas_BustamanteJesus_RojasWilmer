@@ -2,8 +2,8 @@ package com.renta.herramienta.aplication.service;
 
 import java.util.List;
 
-import com.renta.herramienta.domain.dto.ReservaRequest;
 import com.renta.herramienta.domain.entities.Reserva;
+import com.renta.herramienta.domain.request.ReservaRequest;
 
 public interface ReservaService {
 

@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.herramienta.aplication.service.ProveedorService;
-import com.renta.herramienta.domain.dto.ProveedorRequest;
-import com.renta.herramienta.domain.dto.ProveedorUpdateRequest;
 import com.renta.herramienta.domain.entities.Proveedor;
+import com.renta.herramienta.domain.request.ProveedorRequest;
+import com.renta.herramienta.domain.request.ProveedorUpdateRequest;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;

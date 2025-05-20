@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ClienteService;
-import com.renta.herramienta.domain.dto.ClienteRequest;
-import com.renta.herramienta.domain.dto.ClienteUpdateRequest;
 import com.renta.herramienta.domain.entities.Cliente;
 import com.renta.herramienta.domain.entities.Rol;
+import com.renta.herramienta.domain.request.ClienteRequest;
+import com.renta.herramienta.domain.request.ClienteUpdateRequest;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;

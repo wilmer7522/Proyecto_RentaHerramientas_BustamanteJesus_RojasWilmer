@@ -1,5 +1,7 @@
 package com.renta.herramienta.domain.dto;
 
+import com.renta.herramienta.domain.request.HerramientaRequest;
+
 import lombok.Getter;
 import lombok.Setter;
 

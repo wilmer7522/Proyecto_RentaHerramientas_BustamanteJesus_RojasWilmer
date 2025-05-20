@@ -1,4 +1,4 @@
-package com.renta.herramienta.domain.dto;
+package com.renta.herramienta.domain.request;
 
 import java.io.Serializable;
 
