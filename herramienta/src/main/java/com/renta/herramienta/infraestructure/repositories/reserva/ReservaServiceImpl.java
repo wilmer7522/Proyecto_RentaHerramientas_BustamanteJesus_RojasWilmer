@@ -16,7 +16,7 @@ import com.renta.herramienta.infraestructure.repositories.herramienta.Herramient
 @Service
 public class ReservaServiceImpl implements ReservaService {
 
-    private final ReservaRepository reservaRepository;
+    final ReservaRepository reservaRepository;
     private final ClienteRepository clienteRepository;
     private final HerramientaRepository herramientaRepository;
 
@@ -55,6 +55,11 @@ public class ReservaServiceImpl implements ReservaService {
     public Reserva getReservaById(Long id) {
         return reservaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+    }
+
+    @Override
+    public List<Reserva> getAllReservas() {
+        return reservaRepository.findAll();
     }
 
 }

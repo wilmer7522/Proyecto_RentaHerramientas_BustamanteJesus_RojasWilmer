@@ -15,6 +15,9 @@ public interface ReservaService {
 
     Reserva getReservaById(Long id);
 
+    List<Reserva> getAllReservas();
+
+
 }
 
 
