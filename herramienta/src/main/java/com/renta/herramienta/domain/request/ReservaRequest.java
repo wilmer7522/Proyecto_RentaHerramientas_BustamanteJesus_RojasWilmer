@@ -1,5 +1,6 @@
 package com.renta.herramienta.domain.request;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,16 +26,14 @@ public class ReservaRequest {
     @NotEmpty(message = "Debe seleccionar al menos una herramienta")
     private List<Long> id_herramientas;
 
-    //private List<HerramientaDTO> herramienta;
-
     @NotNull(message = "La fecha de reserva es obligatoria")
     private LocalDateTime fechaReserva;
 
     @NotNull(message = "La fecha de inicio es obligatoria")
-    private LocalDateTime fechaInicio;
+    private LocalDate fechaInicio;
 
     @NotNull(message = "La fecha de fin es obligatoria")
-    private LocalDateTime fechaFin;
+    private LocalDate fechaFin;
 
     @NotNull(message = "El estado de la reserva no debe ser nulo")
     private Estado_Reserva estadoReserva;

@@ -1,5 +1,6 @@
 package com.renta.herramienta.domain.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,13 +20,17 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "reserva")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Reserva {
 
     @Id
@@ -53,26 +58,15 @@ public class Reserva {
     private LocalDateTime fecha_reserva;
 
     @Column(nullable = false)
-    private LocalDateTime fecha_inicio;
+    private LocalDate fecha_inicio;
 
     @Column(nullable = false)
-    private LocalDateTime fecha_fin;
+    private LocalDate fecha_fin;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Estado_Reserva estado_reserva;
 
-    public Reserva() {}
-
-    public Reserva(Long id, Cliente cliente, List<Herramienta> herramientas, LocalDateTime fecha_reserva,
-                   LocalDateTime fecha_inicio, LocalDateTime fecha_fin, Estado_Reserva estado_reserva) {
-        this.id = id;
-        this.cliente = cliente;
-        this.herramientas = herramientas;
-        this.fecha_reserva = fecha_reserva;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
-        this.estado_reserva = estado_reserva;
-    }
+    
 }
 

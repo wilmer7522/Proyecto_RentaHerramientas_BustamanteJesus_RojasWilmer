@@ -1,5 +1,6 @@
 package com.renta.herramienta.domain.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class ReservaDTO {
     private String nombreCliente;
     private List<HerramientaDTO> herramientas;
     private LocalDateTime fechaReserva;
-    private LocalDateTime fechaInicio;
-    private LocalDateTime fechaFin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private Estado_Reserva estadoReserva;
 
     

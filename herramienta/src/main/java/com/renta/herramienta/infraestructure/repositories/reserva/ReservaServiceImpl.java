@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ReservaService;
 import com.renta.herramienta.domain.entities.Cliente;
+import com.renta.herramienta.domain.entities.Estado_Reserva;
 import com.renta.herramienta.domain.entities.Herramienta;
 import com.renta.herramienta.domain.entities.Reserva;
 import com.renta.herramienta.domain.request.ReservaRequest;
@@ -38,10 +39,10 @@ public class ReservaServiceImpl implements ReservaService {
         Reserva reserva = new Reserva();
         reserva.setCliente(cliente);
         reserva.setHerramientas(herramientas);
-        reserva.setFecha_reserva(LocalDateTime.now()); // o LocalDateTime.now()
+        reserva.setFecha_reserva(LocalDateTime.now()); //LocalDateTime.now()
         reserva.setFecha_inicio(reservaRequest.getFechaInicio());
         reserva.setFecha_fin(reservaRequest.getFechaFin());
-        reserva.setEstado_reserva(reservaRequest.getEstadoReserva()); // o Estado_Reserva.PENDIENTE
+        reserva.setEstado_reserva(Estado_Reserva.PENDIENTE); //EstadoReserva PENDIENTE
 
         return reservaRepository.save(reserva);
     }

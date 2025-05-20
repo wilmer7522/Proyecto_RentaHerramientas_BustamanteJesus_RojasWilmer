@@ -47,13 +47,6 @@ public ReservaDTO createNewReserva(@RequestBody ReservaRequest request) {
                 .collect(Collectors.toList());
     }
 
-    // 3. Ver detalles de una reserva específica
-    /*
-     * @GetMapping("/reserve/{id}")
-     * public Reserva obtenerDetalleReserva(@PathVariable Long id) {
-     * return reservaService.getReservaById(id);
-     * }
-     */
 
     @GetMapping("/reserve/{id}")
     public ResponseEntity<ReservaDTO> getReserva(@PathVariable Long id) {
