@@ -3,10 +3,6 @@ package com.renta.herramienta.domain.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +32,7 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
-    @JsonManagedReference
+    
     private Cliente cliente;
 
     @ManyToMany

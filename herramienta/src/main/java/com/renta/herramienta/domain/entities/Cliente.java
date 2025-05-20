@@ -2,10 +2,6 @@ package com.renta.herramienta.domain.entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -16,6 +12,7 @@ import lombok.Setter;
 @Table(name = "cliente")
 @Getter
 @Setter
+
 public class Cliente extends Usuario {
 
     private String nombre;
@@ -25,7 +22,7 @@ public class Cliente extends Usuario {
     private String cedula;
 
     @OneToMany(mappedBy = "cliente")
-    @JsonBackReference
+    
     private List<Reserva> reserva;
 
     public Cliente() {

@@ -2,10 +2,6 @@ package com.renta.herramienta.domain.entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -43,7 +39,7 @@ public class Herramienta {
     private Categoria_Herramienta categoria_Herramienta;
 
     @ManyToMany(mappedBy = "herramientas")
-    @JsonBackReference
+    
     private List<Reserva> reservas;
 
     public Herramienta() {

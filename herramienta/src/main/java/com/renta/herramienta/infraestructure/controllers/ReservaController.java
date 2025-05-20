@@ -1,8 +1,10 @@
 package com.renta.herramienta.infraestructure.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.herramienta.aplication.service.ReservaService;
+import com.renta.herramienta.domain.dto.ReservaDTO;
+import com.renta.herramienta.domain.dto.ReservaMapper;
 import com.renta.herramienta.domain.dto.ReservaRequest;
 import com.renta.herramienta.domain.entities.Reserva;
 
@@ -34,14 +38,25 @@ public class ReservaController {
 
     // 2. Ver todas las reservas de un cliente
     @GetMapping("/all/reserve/cliente/{id}")
-    public List<Reserva> listarReservasPorCliente(@PathVariable Long id) {
-        return reservaService.getReservasByCliente(id);
+    public List<ReservaDTO> listarReservasPorCliente(@PathVariable Long id) {
+        List<Reserva> reservas = reservaService.getReservasByCliente(id);
+        return reservas.stream()
+                .map(ReservaMapper::toReservaDTO)
+                .collect(Collectors.toList());
     }
 
     // 3. Ver detalles de una reserva específica
+    /*
+     * @GetMapping("/reserve/{id}")
+     * public Reserva obtenerDetalleReserva(@PathVariable Long id) {
+     * return reservaService.getReservaById(id);
+     * }
+     */
+
     @GetMapping("/reserve/{id}")
-    public Reserva obtenerDetalleReserva(@PathVariable Long id) {
-        return reservaService.getReservaById(id);
+    public ResponseEntity<ReservaDTO> getReserva(@PathVariable Long id) {
+        Reserva reserva = reservaService.getReservaById(id);
+        ReservaDTO dto = ReservaMapper.toReservaDTO(reserva);
+        return ResponseEntity.ok(dto);
     }
 }
-

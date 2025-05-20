@@ -25,6 +25,8 @@ public class ReservaRequest {
     @NotEmpty(message = "Debe seleccionar al menos una herramienta")
     private List<Long> id_herramientas;
 
+    //private List<HerramientaDTO> herramienta;
+
     @NotNull(message = "La fecha de reserva es obligatoria")
     private LocalDateTime fechaReserva;
 
