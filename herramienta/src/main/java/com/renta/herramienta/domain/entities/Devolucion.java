@@ -11,12 +11,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "devolucion")
 public class Devolucion {
 
@@ -26,22 +28,13 @@ public class Devolucion {
 
     private LocalDateTime fecha_devolucion;
     @Enumerated(EnumType.STRING)
-    private Estado_Herramienta estado_Herramienta;
+    private EstadoHerramienta estado_Herramienta;
 
     private String observaciones;
 
     private boolean confirmacion_proveedor;
 
-    public Devolucion() {}
-
-    /*public Devolucion(Long id, LocalDateTime fecha_devolucion, Estado_Herramienta estado_Herramienta,
-            String observaciones, boolean confirmacion_proveedor) {
-        this.id = id;
-        this.fecha_devolucion = fecha_devolucion;
-        this.estado_Herramienta = estado_Herramienta;
-        this.observaciones = observaciones;
-        this.confirmacion_proveedor = confirmacion_proveedor;*/
-    }
+}
 
     
 

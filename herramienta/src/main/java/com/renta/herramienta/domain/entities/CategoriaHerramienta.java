@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "categoria_herramienta")
-public class Categoria_Herramienta {
+public class CategoriaHerramienta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,9 @@ public class Categoria_Herramienta {
     private String nombre;
     private String descripcion;
 
-    public Categoria_Herramienta() {}
+    public CategoriaHerramienta() {}
 
-    public Categoria_Herramienta(Long id, String nombre, String descripcion) {
+    public CategoriaHerramienta(Long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
