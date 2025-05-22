@@ -2,6 +2,8 @@ package com.renta.herramienta.domain.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -34,12 +36,14 @@ public class Herramienta {
     @Enumerated(EnumType.STRING)
     private EstadoHerramienta estadoHerramienta;
 
+    private String fotourl;
+
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
     private CategoriaHerramienta categoriaHerramienta;
 
     @ManyToMany(mappedBy = "herramientas")
-    
+    @JsonIgnore
     private List<Reserva> reservas;
 
     public Herramienta() {
