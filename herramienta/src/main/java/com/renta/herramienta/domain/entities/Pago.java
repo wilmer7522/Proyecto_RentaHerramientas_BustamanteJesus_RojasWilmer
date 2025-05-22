@@ -30,10 +30,10 @@ public class Pago {
     private LocalDateTime fecha_pago;
 
     @Enumerated(EnumType.STRING)
-    private Estado_Pago estado_Pago;
+    private EstadoPago estadoPago;
 
     @Enumerated(EnumType.STRING)
-    private Metodo_Pago metodo_Pago;
+    private MetodoPago metodoPago;
 
     @OneToOne
     @JoinColumn(name = "id_alquiler")
@@ -41,13 +41,13 @@ public class Pago {
 
     public Pago() {}
 
-    public Pago(Long id, int monto, LocalDateTime fecha_pago, Estado_Pago estado_Pago, Metodo_Pago metodo_Pago,
+    public Pago(Long id, int monto, LocalDateTime fecha_pago, EstadoPago estadoPago, MetodoPago metodoPago,
             Alquiler alquiler) {
         this.id = id;
         this.monto = monto;
         this.fecha_pago = fecha_pago;
-        this.estado_Pago = estado_Pago;
-        this.metodo_Pago = metodo_Pago;
+        this.estadoPago = estadoPago;
+        this.metodoPago = metodoPago;
         this.alquiler = alquiler;
     }
 

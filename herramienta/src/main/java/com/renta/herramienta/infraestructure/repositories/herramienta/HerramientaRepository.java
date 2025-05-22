@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.renta.herramienta.domain.entities.CategoriaHerramienta;
 import com.renta.herramienta.domain.entities.EstadoHerramienta;
-import com.renta.herramienta.domain.entities.Estado_Reserva;
+import com.renta.herramienta.domain.entities.EstadoReserva;
 import com.renta.herramienta.domain.entities.Herramienta;
 
 public interface HerramientaRepository extends JpaRepository<Herramienta, Long> {
@@ -29,8 +29,8 @@ public interface HerramientaRepository extends JpaRepository<Herramienta, Long> 
     List<Herramienta> findByNombreContainingIgnoreCase(String nombre);
     
     // Método para encontrar herramientas con reservas activas
-    @Query("SELECT DISTINCT h FROM Herramienta h JOIN h.reservas r WHERE r.estado_reserva = :estado")
-    List<Herramienta> findHerramientasConReservasActivas(@Param("estado") Estado_Reserva estado);
+    @Query("SELECT DISTINCT h FROM Herramienta h JOIN h.reservas r WHERE r.estadoReserva = :estado")
+    List<Herramienta> findHerramientasConReservasActivas(@Param("estado") EstadoReserva estado);
 
 
     // Método corregido para buscar herramientas por ID de categoría

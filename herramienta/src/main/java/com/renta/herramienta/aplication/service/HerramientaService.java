@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.domain.entities.CategoriaHerramienta;
 import com.renta.herramienta.domain.entities.EstadoHerramienta;
-import com.renta.herramienta.domain.entities.Estado_Reserva;
+import com.renta.herramienta.domain.entities.EstadoReserva;
 import com.renta.herramienta.domain.entities.Herramienta;
 import com.renta.herramienta.infraestructure.repositories.herramienta.CategoriaHerramientaRepository;
 import com.renta.herramienta.infraestructure.repositories.herramienta.HerramientaRepository;
@@ -91,7 +91,7 @@ public class HerramientaService {
     public void deleteHerramienta(Long id) {
         Herramienta herramienta = getHerramientaById(id);
 
-        List<Herramienta> herramientasConReservas = herramientaRepository.findHerramientasConReservasActivas(Estado_Reserva.ACEPTADA);
+        List<Herramienta> herramientasConReservas = herramientaRepository.findHerramientasConReservasActivas(EstadoReserva.ACEPTADA);
 ;
         if (herramientasConReservas.contains(herramienta)) {
             throw new IllegalStateException("No se puede eliminar la herramienta porque tiene reservas activas");

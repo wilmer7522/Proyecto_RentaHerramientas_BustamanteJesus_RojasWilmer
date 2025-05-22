@@ -1,6 +1,6 @@
 package com.renta.herramienta.domain.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -15,28 +15,32 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "alquiler")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Alquiler {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private LocalDateTime fecha_alquiler;
+    //@Column(nullable = false)
+    private LocalDate fecha_alquiler;
 
-    @Column(nullable = false)
-    private LocalDateTime fecha_devolucion;
+    //@Column(nullable = false)
+    private LocalDate fecha_devolucion;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Estado_Alquiler estado_alquiler;
+    @Column(name = "estado_alquiler",nullable = false)
+    private EstadoAlquiler estadoAlquiler;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
@@ -47,18 +51,6 @@ public class Alquiler {
     private Reserva reserva;
 
     @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL)
-    private List<Detalle_Alquiler> detalles;
+    private List<DetalleAlquiler> detalle;
 
-    public Alquiler() {}
-
-    public Alquiler(Long id, LocalDateTime fecha_alquiler, LocalDateTime fecha_devolucion,
-                    Estado_Alquiler estado_alquiler, Cliente cliente, Reserva reserva) {
-        this.id = id;
-        this.fecha_alquiler = fecha_alquiler;
-        this.fecha_devolucion = fecha_devolucion;
-        this.estado_alquiler = estado_alquiler;
-        this.cliente = cliente;
-        this.reserva = reserva;
-    }
 }
-

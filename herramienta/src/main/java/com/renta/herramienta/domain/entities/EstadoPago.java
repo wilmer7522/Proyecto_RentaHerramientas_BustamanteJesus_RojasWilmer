@@ -1,6 +1,6 @@
 package com.renta.herramienta.domain.entities;
 
-public enum Estado_Pago {
+public enum EstadoPago {
     
     COMPLETADO, PENDIENTE, FALLIDO
 }

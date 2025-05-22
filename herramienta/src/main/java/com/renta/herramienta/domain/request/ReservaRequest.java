@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.renta.herramienta.domain.entities.Estado_Reserva;
+import com.renta.herramienta.domain.entities.EstadoReserva;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -36,7 +36,7 @@ public class ReservaRequest {
     private LocalDate fechaFin;
 
     @NotNull(message = "El estado de la reserva no debe ser nulo")
-    private Estado_Reserva estadoReserva;
+    private EstadoReserva estadoReserva;
 }
 
 

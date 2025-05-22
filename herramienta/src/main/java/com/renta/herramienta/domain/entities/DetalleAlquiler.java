@@ -7,16 +7,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "detalle_alquiler")
 @Getter
 @Setter
-public class Detalle_Alquiler {
-    
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "detalle_alquiler")
+public class DetalleAlquiler {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,19 +42,12 @@ public class Detalle_Alquiler {
     private double precio_unitario;
 
     @Column(nullable = false)
-    private double subtotal = precio_unitario * cantidad_dias;
+    private double subtotal;
 
-    public Detalle_Alquiler() {
+    @PrePersist
+    @PreUpdate
+    public void calcularSubtotal() {
+        this.subtotal = this.precio_unitario * this.cantidad_dias;
     }
-
-    public Detalle_Alquiler(Long id, Herramienta herramienta, Alquiler alquiler, int cantidad_dias,
-            double precio_unitario, double subtotal) {
-        this.id = id;
-        this.herramienta = herramienta;
-        this.alquiler = alquiler;
-        this.cantidad_dias = cantidad_dias;
-        this.precio_unitario = precio_unitario;
-        this.subtotal = subtotal;
-    }
-
 }
+

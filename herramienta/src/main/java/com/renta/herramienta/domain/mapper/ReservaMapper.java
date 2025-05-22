@@ -26,7 +26,7 @@ public class ReservaMapper {
         dto.setFechaReserva(reserva.getFecha_reserva());
         dto.setFechaInicio(reserva.getFecha_inicio());
         dto.setFechaFin(reserva.getFecha_fin());
-        dto.setEstadoReserva(reserva.getEstado_reserva());
+        dto.setEstadoReserva(reserva.getEstadoReserva());
 
         return dto;
     }
@@ -36,6 +36,7 @@ public class ReservaMapper {
         ReservaDTO dto = new ReservaDTO();
 
         dto.setId(reserva.getId());
+        dto.setIdCliente(reserva.getCliente().getId());
         dto.setNombreCliente(reserva.getCliente().getNombre());
 
         dto.setHerramientas(
@@ -47,7 +48,7 @@ public class ReservaMapper {
         dto.setFechaReserva(reserva.getFecha_reserva());
         dto.setFechaInicio(reserva.getFecha_inicio());
         dto.setFechaFin(reserva.getFecha_fin());
-        dto.setEstadoReserva(reserva.getEstado_reserva());
+        dto.setEstadoReserva(reserva.getEstadoReserva());
 
         return dto;
     }

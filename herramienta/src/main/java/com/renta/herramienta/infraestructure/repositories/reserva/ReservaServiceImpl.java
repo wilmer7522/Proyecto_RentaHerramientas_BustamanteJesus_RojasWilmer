@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ReservaService;
 import com.renta.herramienta.domain.entities.Cliente;
-import com.renta.herramienta.domain.entities.Estado_Reserva;
+import com.renta.herramienta.domain.entities.EstadoReserva;
 import com.renta.herramienta.domain.entities.Herramienta;
 import com.renta.herramienta.domain.entities.Reserva;
 import com.renta.herramienta.domain.request.ReservaRequest;
 import com.renta.herramienta.infraestructure.repositories.cliente.ClienteRepository;
 import com.renta.herramienta.infraestructure.repositories.herramienta.HerramientaRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ReservaServiceImpl implements ReservaService {
@@ -42,7 +44,7 @@ public class ReservaServiceImpl implements ReservaService {
         reserva.setFecha_reserva(LocalDateTime.now()); //LocalDateTime.now()
         reserva.setFecha_inicio(reservaRequest.getFechaInicio());
         reserva.setFecha_fin(reservaRequest.getFechaFin());
-        reserva.setEstado_reserva(Estado_Reserva.PENDIENTE); //EstadoReserva PENDIENTE
+        reserva.setEstadoReserva(EstadoReserva.PENDIENTE); //EstadoReserva PENDIENTE
 
         return reservaRepository.save(reserva);
     }
@@ -59,8 +61,29 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-    public List<Reserva> getAllReservas() {
-        return reservaRepository.findAll();
-    }
+public List<Reserva> getReservasPendientes() {
+    return reservaRepository.findByEstadoReserva(EstadoReserva.PENDIENTE);
+}
+
+@Override
+public void actualizarEstado(Long id, EstadoReserva nuevoEstado) {
+    // 1. Buscar la reserva por ID
+    Reserva reserva = reservaRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Reserva no encontrada con ID: " + id));
+
+    // 2. Cambiar el estado
+    reserva.setEstadoReserva(nuevoEstado);
+
+    // 3. Guardar la reserva actualizada
+    reservaRepository.save(reserva);
+}
+
+@Override
+public List<Reserva> getAllReservasPendientes() {
+    return reservaRepository.findAll();
+}
+
+
+    
 
 }

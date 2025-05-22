@@ -1,7 +1,8 @@
 package com.renta.herramienta.domain.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,22 +10,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "reporte_dano")
-public class Reporte_Dano {
-    
+public class ReporteDano {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String descripcion;
-
-    private LocalDateTime fecha_reporte;
+    @Column(name = "fecha_reporte")
+    private LocalDate fechaReporte;
 
     @ManyToOne
     @JoinColumn(name = "id_devolucion", nullable = false)
@@ -34,16 +39,4 @@ public class Reporte_Dano {
     @JoinColumn(name = "id_herramienta", nullable = false)
     private Herramienta herramienta;
 
-    public Reporte_Dano() {}
-
-    public Reporte_Dano(Long id, String descripcion, LocalDateTime fecha_reporte, Devolucion devolucion,
-            Herramienta herramienta) {
-        this.id = id;
-        this.descripcion = descripcion;
-        this.fecha_reporte = fecha_reporte;
-        this.devolucion = devolucion;
-        this.herramienta = herramienta;
-    }
-
-    
 }
