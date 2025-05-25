@@ -1,37 +1,38 @@
 package com.renta.herramienta.domain.mapper;
 
 import java.util.stream.Collectors;
+import java.util.List;
 
-import com.renta.herramienta.domain.dto.HerramientaDTO;
+import com.renta.herramienta.domain.dto.HerramientaCantidadDTO;
 import com.renta.herramienta.domain.dto.ReservaDTO;
-import com.renta.herramienta.domain.entities.Herramienta;
 import com.renta.herramienta.domain.entities.Reserva;
+import com.renta.herramienta.domain.entities.DetalleReserva;
 import com.renta.herramienta.domain.request.ReservaRequest;
-
 
 public class ReservaMapper {
 
-    // Mapper que convierte Reserva en ReservaRequest (para devolver una reserva creada o encontrada)
     public static ReservaRequest toReservaRequest(Reserva reserva) {
         ReservaRequest dto = new ReservaRequest();
 
         dto.setIdCliente(reserva.getCliente().getId());
 
-        dto.setId_herramientas(
-            reserva.getHerramientas().stream()
-                .map(Herramienta::getId)
-                .collect(Collectors.toList())
-        );
+        List<HerramientaCantidadDTO> herramientas = reserva.getDetalleReserva().stream()
+            .map((DetalleReserva detalle) -> new HerramientaCantidadDTO(
+                detalle.getHerramienta().getId(),
+                null, detalle.getCantidad() // aquí sólo el id y cantidad porque ReservaRequest no necesita nombre
+            ))
+            .collect(Collectors.toList());
 
-        dto.setFechaReserva(reserva.getFecha_reserva());
-        dto.setFechaInicio(reserva.getFecha_inicio());
-        dto.setFechaFin(reserva.getFecha_fin());
+        dto.setHerramientas(herramientas);
+
+        dto.setFechaReserva(reserva.getFechaReserva());
+        dto.setFechaInicio(reserva.getFechaInicio());
+        dto.setFechaFin(reserva.getFechaFin());
         dto.setEstadoReserva(reserva.getEstadoReserva());
 
         return dto;
     }
 
-    // Mapper que convierte Reserva en ReservaDTO (para mostrar información detallada al cliente)
     public static ReservaDTO toReservaDTO(Reserva reserva) {
         ReservaDTO dto = new ReservaDTO();
 
@@ -39,18 +40,26 @@ public class ReservaMapper {
         dto.setIdCliente(reserva.getCliente().getId());
         dto.setNombreCliente(reserva.getCliente().getNombre());
 
-        dto.setHerramientas(
-            reserva.getHerramientas().stream()
-                .map(h -> new HerramientaDTO(h.getId(), h.getNombre()))
-                .collect(Collectors.toList())
-        );
+        // Aquí usamos HerramientaCantidadDTO para incluir cantidad y nombre
+        List<HerramientaCantidadDTO> herramientas = reserva.getDetalleReserva().stream()
+            .map(detalle -> new HerramientaCantidadDTO(
+                detalle.getHerramienta().getId(),
+                detalle.getHerramienta().getNombre(),
+                detalle.getCantidad()
+            ))
+            .collect(Collectors.toList());
 
-        dto.setFechaReserva(reserva.getFecha_reserva());
-        dto.setFechaInicio(reserva.getFecha_inicio());
-        dto.setFechaFin(reserva.getFecha_fin());
+        dto.setHerramientas(herramientas);
+
+        dto.setFechaReserva(reserva.getFechaReserva());
+        dto.setFechaInicio(reserva.getFechaInicio());
+        dto.setFechaFin(reserva.getFechaFin());
         dto.setEstadoReserva(reserva.getEstadoReserva());
 
         return dto;
     }
 }
+
+
+
 

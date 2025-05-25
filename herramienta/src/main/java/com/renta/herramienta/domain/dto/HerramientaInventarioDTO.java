@@ -1,4 +1,4 @@
-package com.renta.herramienta.domain.request;
+package com.renta.herramienta.domain.dto;
 
 import com.renta.herramienta.domain.entities.EstadoHerramienta;
 
@@ -7,12 +7,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class HerramientaRequest {
+public class HerramientaInventarioDTO {
     private Long id;
     private String nombre;
     private String descripcion;
     private int costo_dia;
     private boolean disponible;
     private EstadoHerramienta estadoHerramienta;
-    private Long categoriaId;
+    private String nombreCategoria;
 }

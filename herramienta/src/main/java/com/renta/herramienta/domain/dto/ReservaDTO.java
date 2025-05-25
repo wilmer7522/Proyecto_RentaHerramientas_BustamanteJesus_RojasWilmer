@@ -21,7 +21,8 @@ public class ReservaDTO {
     private Long id;
     private Long idCliente;
     private String nombreCliente;
-    private List<HerramientaDTO> herramientas;
+    private List<HerramientaCantidadDTO> herramientas;
+    
     private LocalDateTime fechaReserva;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;

@@ -1,5 +1,7 @@
 package com.renta.herramienta.infraestructure.controllers;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,16 +30,32 @@ public class PagoController {
         this.pagoService = pagoService;
     }
 
+    @GetMapping("/pago")
+public ResponseEntity<List<PagoDTO>> listarPagos() {
+    List<PagoDTO> pagos = pagoService.listarPagos();
+    return ResponseEntity.ok(pagos);
+}
+
+
     @PostMapping("/pago")
     public ResponseEntity<PagoDTO> crearPago(@RequestBody @Valid PagoRequest pagoRequest) {
         PagoDTO pagoDTO = pagoService.registrarPago(pagoRequest);
         return new ResponseEntity<>(pagoDTO, HttpStatus.CREATED);
     }
 
+    @GetMapping("/pago/pendientes")
+    public ResponseEntity<List<PagoDTO>> obtenerPagosPendientes() {
+    List<PagoDTO> pagosPendientes = pagoService.obtenerPagosPendientes();
+    return ResponseEntity.ok(pagosPendientes);
+}
+
+
     @GetMapping("/pago/{id}")
     public ResponseEntity<PagoDTO> obtenerPago(@PathVariable Long id) {
         PagoDTO pagoDTO = pagoService.obtenerPagoPorId(id);
         return ResponseEntity.ok(pagoDTO);
+
+
     }
 
     @PatchMapping("/pago/{id}/confirmar")
@@ -51,5 +69,7 @@ public class PagoController {
         PagoDTO resultado = pagoService.actualizarEstadoPago(id, EstadoPago.FALLIDO);
         return ResponseEntity.ok(resultado);
     }
+
+
 
 }

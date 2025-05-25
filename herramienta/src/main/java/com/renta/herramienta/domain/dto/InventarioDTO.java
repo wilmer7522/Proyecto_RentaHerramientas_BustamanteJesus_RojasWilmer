@@ -9,16 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DetalleAlquilerDTO {
-
+public class InventarioDTO {
     private Long id;
-    private Long idHerramienta;
     private String nombreHerramienta;
-
-    private int cantidad;
-    private int cantidadDias;
-    private double precioUnitario;
-    private double subtotal;
+    private int cantidadTotal;
+    private int cantidadDisponible;
+    private String nombreProveedor;
 }
-
-

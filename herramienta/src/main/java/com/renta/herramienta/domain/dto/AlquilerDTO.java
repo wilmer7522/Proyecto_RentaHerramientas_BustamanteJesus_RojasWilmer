@@ -27,6 +27,7 @@ public class AlquilerDTO {
 
     private List<HerramientaDTO> herramientas;
 
+
     private List<DetalleAlquilerDTO> detalles;
 }
 

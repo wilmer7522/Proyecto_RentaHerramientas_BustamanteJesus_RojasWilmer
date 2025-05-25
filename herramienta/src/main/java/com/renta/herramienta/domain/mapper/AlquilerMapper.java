@@ -8,6 +8,7 @@ import com.renta.herramienta.domain.dto.HerramientaDTO;
 import com.renta.herramienta.domain.entities.Alquiler;
 import com.renta.herramienta.domain.entities.DetalleAlquiler;
 
+
 public class AlquilerMapper {
 
     public static AlquilerDTO toDTO(Alquiler alquiler) {
@@ -24,21 +25,27 @@ public class AlquilerMapper {
             dto.setNombreCliente(alquiler.getCliente().getNombre());
         }
 
-        if (alquiler.getReserva() != null) {
-            dto.setIdReserva(alquiler.getReserva().getId());
+        if (alquiler.getReserva() != null && alquiler.getReserva().getDetalleReserva() != null) {
+            // Mapear herramientas desde detalleReserva para incluir cantidad y demás info si se requiere
             dto.setHerramientas(
-                alquiler.getReserva().getHerramientas()
-                        .stream()
-                        .map(h -> new HerramientaDTO(h.getId(), h.getNombre()))
-                        .collect(Collectors.toList())
+                alquiler.getReserva().getDetalleReserva()
+                    .stream()
+                    .map(det -> new HerramientaDTO(
+                        det.getHerramienta().getId(),
+                        det.getHerramienta().getNombre()
+                    ))
+                    .collect(Collectors.toList())
             );
+
+            dto.setIdReserva(alquiler.getReserva().getId());
         }
 
         if (alquiler.getDetalle() != null) {
             dto.setDetalles(
-                alquiler.getDetalle().stream()
-                        .map(AlquilerMapper::toDetalleDTO)
-                        .collect(Collectors.toList())
+                alquiler.getDetalle()
+                    .stream()
+                    .map(AlquilerMapper::toDetalleDTO)
+                    .collect(Collectors.toList())
             );
         }
 
@@ -46,6 +53,8 @@ public class AlquilerMapper {
     }
 
     private static DetalleAlquilerDTO toDetalleDTO(DetalleAlquiler detalle) {
+        if (detalle == null) return null;
+
         DetalleAlquilerDTO dto = new DetalleAlquilerDTO();
         dto.setId(detalle.getId());
         dto.setCantidadDias(detalle.getCantidad_dias());
@@ -57,7 +66,8 @@ public class AlquilerMapper {
             dto.setNombreHerramienta(detalle.getHerramienta().getNombre());
         }
 
+        dto.setCantidad(detalle.getCantidad());
+
         return dto;
     }
 }
-

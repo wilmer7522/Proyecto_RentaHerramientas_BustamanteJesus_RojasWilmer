@@ -1,5 +1,6 @@
 package com.renta.herramienta.domain.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,15 +12,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "herramienta")
 public class Herramienta {
 
@@ -42,22 +47,8 @@ public class Herramienta {
     @JoinColumn(name = "id_categoria", nullable = false)
     private CategoriaHerramienta categoriaHerramienta;
 
-    @ManyToMany(mappedBy = "herramientas")
+    @OneToMany(mappedBy = "herramienta")
     @JsonIgnore
-    private List<Reserva> reservas;
-
-    public Herramienta() {
-    }
-
-    public Herramienta(Long id, String nombre, String descripcion, int costo_dia, boolean disponible,
-            EstadoHerramienta estadoHerramienta, CategoriaHerramienta categoriaHerramienta) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.costo_dia = costo_dia;
-        this.disponible = disponible;
-        this.estadoHerramienta = estadoHerramienta;
-        this.categoriaHerramienta = categoriaHerramienta;
-    }
-
+    private List<DetalleReserva> detalleReservas = new ArrayList<>();
 }
+

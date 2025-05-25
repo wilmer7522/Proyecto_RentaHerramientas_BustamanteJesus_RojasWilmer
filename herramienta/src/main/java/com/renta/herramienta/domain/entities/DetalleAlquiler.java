@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Getter
 @Setter
@@ -39,6 +40,9 @@ public class DetalleAlquiler {
     private int cantidad_dias;
 
     @Column(nullable = false)
+    private int cantidad; // NUEVO: Cantidad de unidades alquiladas
+
+    @Column(nullable = false)
     private double precio_unitario;
 
     @Column(nullable = false)
@@ -47,7 +51,6 @@ public class DetalleAlquiler {
     @PrePersist
     @PreUpdate
     public void calcularSubtotal() {
-        this.subtotal = this.precio_unitario * this.cantidad_dias;
+        this.subtotal = this.precio_unitario * this.cantidad_dias * this.cantidad;
     }
 }
-

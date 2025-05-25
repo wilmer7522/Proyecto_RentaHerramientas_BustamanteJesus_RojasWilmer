@@ -1,6 +1,7 @@
 package com.renta.herramienta.domain.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -32,14 +33,14 @@ public class Alquiler {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private LocalDate fecha_alquiler;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private LocalDate fecha_devolucion;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "estado_alquiler",nullable = false)
+    @Column(name = "estado_alquiler", nullable = false)
     private EstadoAlquiler estadoAlquiler;
 
     @ManyToOne
@@ -47,10 +48,10 @@ public class Alquiler {
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_reserva") // Puedes nombrar explícitamente la columna
+    @JoinColumn(name = "id_reserva")
     private Reserva reserva;
 
-    @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL)
-    private List<DetalleAlquiler> detalle;
+    @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetalleAlquiler> detalle = new ArrayList<>();
 
 }

@@ -1,7 +1,8 @@
 package com.renta.herramienta.infraestructure.repositories.pago;
 
 import java.time.LocalDate;
-
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,16 @@ public class PagoServiceImpl implements PagoService {
         this.pagoRepository = pagoRepository;
         this.alquilerRepository = alquilerRepository;
     }
+
+    //Ver todos los pagos
+    @Override
+public List<PagoDTO> listarPagos() {
+    List<Pago> pagos = pagoRepository.findAll();
+    return pagos.stream()
+                .map(PagoMapper::toDTO)
+                .collect(Collectors.toList());
+}
+
 
     @Override
     public PagoDTO registrarPago(PagoRequest request) {
@@ -90,6 +101,16 @@ public PagoDTO actualizarEstadoPago(Long id, EstadoPago nuevoEstado) {
 
     return PagoMapper.toDTO(pago);
 }
+
+
+@Override
+public List<PagoDTO> obtenerPagosPendientes() {
+    List<Pago> pagosPendientes = pagoRepository.findByEstadoPago(EstadoPago.PENDIENTE);
+    return pagosPendientes.stream()
+            .map(PagoMapper::toDTO)
+            .collect(Collectors.toList());
+}
+
 
 
 

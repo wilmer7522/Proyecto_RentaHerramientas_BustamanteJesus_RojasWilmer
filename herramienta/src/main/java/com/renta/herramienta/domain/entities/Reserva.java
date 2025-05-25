@@ -2,6 +2,7 @@ package com.renta.herramienta.domain.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,9 +16,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -42,31 +42,26 @@ public class Reserva {
     @JsonIgnore
     private Cliente cliente;
 
-    @ManyToMany
-    @JoinTable(
-        name = "reserva_herramienta", 
-        joinColumns = @JoinColumn(name = "id_reserva"), 
-        inverseJoinColumns = @JoinColumn(name = "id_herramienta")
-    )
-    
-    private List<Herramienta> herramientas;
+    @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetalleReserva> detalleReserva = new ArrayList<>();  
 
     @OneToOne(mappedBy = "reserva", cascade = CascadeType.ALL)
     private Aprobacion aprobacion;
 
-    @Column(nullable = false)
-    private LocalDateTime fecha_reserva;
+    @Column(name = "fecha_reserva", nullable = false)
+    private LocalDateTime fechaReserva;
 
-    @Column(nullable = false)
-    private LocalDate fecha_inicio;
+    @Column(name = "fecha_inicio", nullable = false)
+    private LocalDate fechaInicio;
 
-    @Column(nullable = false)
-    private LocalDate fecha_fin;
+    @Column(name = "fecha_fin", nullable = false)
+    private LocalDate fechaFin;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "estado_reserva", nullable = false)
     private EstadoReserva estadoReserva;
-
-    
 }
+
+
+
 

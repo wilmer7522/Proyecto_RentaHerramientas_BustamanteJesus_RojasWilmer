@@ -7,18 +7,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class DetalleAlquilerDTO {
-
-    private Long id;
-    private Long idHerramienta;
+@AllArgsConstructor
+public class DetalleFacturaDTO {
     private String nombreHerramienta;
-
+    private double costoPorDia;
+    private int diasAlquiler;
     private int cantidad;
-    private int cantidadDias;
-    private double precioUnitario;
-    private double subtotal;
+    private double totalPorHerramienta;
 }
-
 

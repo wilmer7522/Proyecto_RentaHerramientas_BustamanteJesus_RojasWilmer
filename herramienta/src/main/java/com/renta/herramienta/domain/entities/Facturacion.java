@@ -1,7 +1,7 @@
 package com.renta.herramienta.domain.entities;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -14,13 +14,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "facturacion")
 public class Facturacion {
     
@@ -29,7 +32,7 @@ public class Facturacion {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDateTime fecha_emision;
+    private LocalDate fecha_emision;
 
     @Column(nullable = false)
     private double total;
@@ -49,14 +52,6 @@ public class Facturacion {
     @Column(name = "numero_factura", unique = true, nullable = false, length = 30)
     private String numeroFactura;
 
-    public Facturacion() {}
-
-    public Facturacion(LocalDateTime fecha_emision, double total, Pago pago, Proveedor proveedor, String numeroFactura) {
-        this.fecha_emision = fecha_emision;
-        this.total = total;
-        this.pago = pago;
-        this.proveedor = proveedor;
-        this.numeroFactura = numeroFactura;
-    }
+    
 }
 

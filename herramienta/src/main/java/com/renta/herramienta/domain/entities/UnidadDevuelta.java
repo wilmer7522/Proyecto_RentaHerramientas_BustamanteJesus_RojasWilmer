@@ -7,11 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class DetalleDevolucion {
-
-    private int cantidad; 
+@NoArgsConstructor
+public class UnidadDevuelta {
     private boolean danada;
     private String descripcion;
 }

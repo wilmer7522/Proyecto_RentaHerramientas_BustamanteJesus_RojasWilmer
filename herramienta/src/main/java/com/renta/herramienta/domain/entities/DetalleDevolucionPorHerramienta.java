@@ -1,5 +1,7 @@
 package com.renta.herramienta.domain.entities;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,12 +9,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class DetalleDevolucion {
-
-    private int cantidad; 
-    private boolean danada;
-    private String descripcion;
+@NoArgsConstructor
+public class DetalleDevolucionPorHerramienta {
+    private Long herramientaId;
+    private List<UnidadDevuelta> devoluciones;
 }
 

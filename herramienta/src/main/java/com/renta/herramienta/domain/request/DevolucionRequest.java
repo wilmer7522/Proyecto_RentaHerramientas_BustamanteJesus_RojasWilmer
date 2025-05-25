@@ -1,8 +1,8 @@
 package com.renta.herramienta.domain.request;
 
-import java.util.Map;
+import java.util.List;
 
-import com.renta.herramienta.domain.entities.DetalleDevolucion;
+import com.renta.herramienta.domain.entities.DetalleDevolucionPorHerramienta;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DevolucionRequest {
     private Long alquilerId;
-    private Map<Long, DetalleDevolucion> herramientasDevueltas; // idHerramienta -> estáDañada (true = dañada)
+    private List<DetalleDevolucionPorHerramienta> herramientas; // Cada herramienta con sus unidades devueltas
 }
+
 

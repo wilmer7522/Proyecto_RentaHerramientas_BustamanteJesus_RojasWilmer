@@ -2,11 +2,14 @@ package com.renta.herramienta.infraestructure.repositories.reserva;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ReservaService;
+import com.renta.herramienta.domain.dto.HerramientaCantidadDTO;
 import com.renta.herramienta.domain.entities.Cliente;
+import com.renta.herramienta.domain.entities.DetalleReserva;
 import com.renta.herramienta.domain.entities.EstadoReserva;
 import com.renta.herramienta.domain.entities.Herramienta;
 import com.renta.herramienta.domain.entities.Reserva;
@@ -36,15 +39,36 @@ public class ReservaServiceImpl implements ReservaService {
         Cliente cliente = clienteRepository.findById(reservaRequest.getIdCliente())
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
-        List<Herramienta> herramientas = herramientaRepository.findAllById(reservaRequest.getId_herramientas());
+        // Extraer IDs de las herramientas
+        List<Long> herramientaIds = reservaRequest.getHerramientas().stream()
+                .map(HerramientaCantidadDTO::getId)
+                .collect(Collectors.toList());
+
+        // Obtener las herramientas desde la BD
+        List<Herramienta> herramientas = herramientaRepository.findAllById(herramientaIds);
 
         Reserva reserva = new Reserva();
         reserva.setCliente(cliente);
-        reserva.setHerramientas(herramientas);
-        reserva.setFecha_reserva(LocalDateTime.now()); //LocalDateTime.now()
-        reserva.setFecha_inicio(reservaRequest.getFechaInicio());
-        reserva.setFecha_fin(reservaRequest.getFechaFin());
-        reserva.setEstadoReserva(EstadoReserva.PENDIENTE); //EstadoReserva PENDIENTE
+        reserva.setFechaReserva(LocalDateTime.now());
+        reserva.setFechaInicio(reservaRequest.getFechaInicio());
+        reserva.setFechaFin(reservaRequest.getFechaFin());
+        reserva.setEstadoReserva(EstadoReserva.PENDIENTE);
+
+        // Crear detalles de reserva con cantidad
+        List<DetalleReserva> detalles = reservaRequest.getHerramientas().stream().map(hcDTO -> {
+            Herramienta herramienta = herramientas.stream()
+                    .filter(h -> h.getId().equals(hcDTO.getId()))
+                    .findFirst()
+                    .orElseThrow(() -> new RuntimeException("Herramienta no encontrada con ID: " + hcDTO.getId()));
+
+            DetalleReserva detalle = new DetalleReserva();
+            detalle.setHerramienta(herramienta);
+            detalle.setReserva(reserva);
+            detalle.setCantidad(hcDTO.getCantidad());
+            return detalle;
+        }).collect(Collectors.toList());
+
+        reserva.setDetalleReserva(detalles);
 
         return reservaRepository.save(reserva);
     }
@@ -61,29 +85,26 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-public List<Reserva> getReservasPendientes() {
-    return reservaRepository.findByEstadoReserva(EstadoReserva.PENDIENTE);
-}
+    public List<Reserva> getReservasPendientes() {
+        return reservaRepository.findByEstadoReserva(EstadoReserva.PENDIENTE);
+    }
 
-@Override
-public void actualizarEstado(Long id, EstadoReserva nuevoEstado) {
-    // 1. Buscar la reserva por ID
-    Reserva reserva = reservaRepository.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Reserva no encontrada con ID: " + id));
+    @Override
+    public void actualizarEstado(Long id, EstadoReserva nuevoEstado) {
+        // 1. Buscar la reserva por ID
+        Reserva reserva = reservaRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Reserva no encontrada con ID: " + id));
 
-    // 2. Cambiar el estado
-    reserva.setEstadoReserva(nuevoEstado);
+        // 2. Cambiar el estado
+        reserva.setEstadoReserva(nuevoEstado);
 
-    // 3. Guardar la reserva actualizada
-    reservaRepository.save(reserva);
-}
+        // 3. Guardar la reserva actualizada
+        reservaRepository.save(reserva);
+    }
 
-@Override
-public List<Reserva> getAllReservasPendientes() {
-    return reservaRepository.findAll();
-}
-
-
-    
+    @Override
+    public List<Reserva> getAllReservasPendientes() {
+        return reservaRepository.findAll();
+    }
 
 }
