@@ -29,7 +29,7 @@ public class Pago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int monto;
+    private double monto;
     @Column(name = "fecha_pago")
     private LocalDate fechaPago;
 

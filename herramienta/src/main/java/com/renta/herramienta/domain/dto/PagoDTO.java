@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PagoDTO {
     private Long id;
-    private int monto;
+    private double monto;
     private LocalDate fechaPago;
     private EstadoPago estadoPago;
     private MetodoPago metodoPago;

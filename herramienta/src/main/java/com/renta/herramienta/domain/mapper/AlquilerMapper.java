@@ -8,11 +8,11 @@ import com.renta.herramienta.domain.dto.HerramientaDTO;
 import com.renta.herramienta.domain.entities.Alquiler;
 import com.renta.herramienta.domain.entities.DetalleAlquiler;
 
-
 public class AlquilerMapper {
 
     public static AlquilerDTO toDTO(Alquiler alquiler) {
-        if (alquiler == null) return null;
+        if (alquiler == null)
+            return null;
 
         AlquilerDTO dto = new AlquilerDTO();
         dto.setId(alquiler.getId());
@@ -26,34 +26,40 @@ public class AlquilerMapper {
         }
 
         if (alquiler.getReserva() != null && alquiler.getReserva().getDetalleReserva() != null) {
-            // Mapear herramientas desde detalleReserva para incluir cantidad y demás info si se requiere
+            // Mapear herramientas desde detalleReserva para incluir cantidad y demás info
+            // si se requiere
             dto.setHerramientas(
-                alquiler.getReserva().getDetalleReserva()
-                    .stream()
-                    .map(det -> new HerramientaDTO(
-                        det.getHerramienta().getId(),
-                        det.getHerramienta().getNombre()
-                    ))
-                    .collect(Collectors.toList())
-            );
+                    alquiler.getReserva().getDetalleReserva()
+                            .stream()
+                            .map(det -> new HerramientaDTO(
+                                    det.getHerramienta().getId(),
+                                    det.getHerramienta().getNombre()))
+                            .collect(Collectors.toList()));
 
             dto.setIdReserva(alquiler.getReserva().getId());
         }
 
         if (alquiler.getDetalle() != null) {
             dto.setDetalles(
-                alquiler.getDetalle()
-                    .stream()
-                    .map(AlquilerMapper::toDetalleDTO)
-                    .collect(Collectors.toList())
-            );
+                    alquiler.getDetalle()
+                            .stream()
+                            .map(AlquilerMapper::toDetalleDTO)
+                            .collect(Collectors.toList()));
         }
+
+        double total = dto.getDetalles() != null
+                ? dto.getDetalles().stream()
+                        .mapToDouble(DetalleAlquilerDTO::getSubtotal)
+                        .sum()
+                : 0.0;
+        dto.setTotal((int)total);
 
         return dto;
     }
 
     private static DetalleAlquilerDTO toDetalleDTO(DetalleAlquiler detalle) {
-        if (detalle == null) return null;
+        if (detalle == null)
+            return null;
 
         DetalleAlquilerDTO dto = new DetalleAlquilerDTO();
         dto.setId(detalle.getId());

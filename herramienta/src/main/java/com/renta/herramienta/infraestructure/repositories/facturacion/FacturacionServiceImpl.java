@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.FacturacionService;
 import com.renta.herramienta.domain.dto.FacturacionDTO;
+import com.renta.herramienta.domain.entities.DetalleAlquiler;
 import com.renta.herramienta.domain.entities.EstadoPago;
 import com.renta.herramienta.domain.entities.Facturacion;
 import com.renta.herramienta.domain.entities.Pago;
@@ -15,7 +16,6 @@ import com.renta.herramienta.domain.request.FacturacionRequest;
 import com.renta.herramienta.infraestructure.repositories.pago.PagoRepository;
 import com.renta.herramienta.infraestructure.repositories.proveedor.ProveedorRepository;
 
-
 @Service
 public class FacturacionServiceImpl implements FacturacionService {
 
@@ -24,8 +24,8 @@ public class FacturacionServiceImpl implements FacturacionService {
     private final ProveedorRepository proveedorRepository;
 
     public FacturacionServiceImpl(FacturacionRepository facturacionRepository,
-                                  PagoRepository pagoRepository,
-                                  ProveedorRepository proveedorRepository) {
+            PagoRepository pagoRepository,
+            ProveedorRepository proveedorRepository) {
         this.facturacionRepository = facturacionRepository;
         this.pagoRepository = pagoRepository;
         this.proveedorRepository = proveedorRepository;
@@ -49,7 +49,16 @@ public class FacturacionServiceImpl implements FacturacionService {
             throw new RuntimeException("Ya existe una factura para este pago");
         });
 
+        
+
         Facturacion factura = FacturacionMapper.toEntity(request, pago, proveedor);
+
+        double total = pago.getAlquiler().getDetalle()
+                .stream()
+                .mapToDouble(DetalleAlquiler::getSubtotal)
+                .sum();
+
+        factura.setTotal(total);
         Facturacion facturaGuardada = facturacionRepository.save(factura);
 
         // Log para verificar que la factura se guardó
