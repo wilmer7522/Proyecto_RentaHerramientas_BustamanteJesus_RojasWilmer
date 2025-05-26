@@ -24,147 +24,10 @@ Este proyecto es una API REST construida con Spring Boot para gestionar el alqui
 
 ## 📁 Estructura del Proyecto
 
-./
-├── HerramientaApplication.java
-├── aplication/
-│   └── service/
-│       ├── AlquilerService.java
-│       ├── CategoriaHerramientaService.java
-│       ├── ClienteService.java
-│       ├── DevolucionService.java
-│       ├── FacturaPdfGenerator.java
-│       ├── FacturacionService.java
-│       ├── HerramientaService.java
-│       ├── InventarioService.java
-│       ├── PagoService.java
-│       ├── ProveedorService.java
-│       ├── ReservaService.java
-│       └── UsuarioService.java
-├── domain/
-│   ├── dto/
-│   │   ├── AlquilerDTO.java
-│   │   ├── ClienteDTO.java
-│   │   ├── DetalleAlquilerDTO.java
-│   │   ├── DetalleFacturaDTO.java
-│   │   ├── DevolucionDTO.java
-│   │   ├── FacturacionDTO.java
-│   │   ├── HerramientaCantidadDTO.java
-│   │   ├── HerramientaDTO.java
-│   │   ├── HerramientaInventarioDTO.java
-│   │   ├── HerramientaInventarioResumenDTO.java
-│   │   ├── HerramientaResponse.java
-│   │   ├── InventarioDTO.java
-│   │   ├── PagoDTO.java
-│   │   ├── ProveedorDTO.java
-│   │   ├── ReporteDanoDTO.java
-│   │   └── ReservaDTO.java
-│   ├── entities/
-│   │   ├── Admin.java
-│   │   ├── Alquiler.java
-│   │   ├── Aprobacion.java
-│   │   ├── CategoriaHerramienta.java
-│   │   ├── Cliente.java
-│   │   ├── DetalleAlquiler.java
-│   │   ├── DetalleDevolucion.java
-│   │   ├── DetalleDevolucionPorHerramienta.java
-│   │   ├── DetalleReserva.java
-│   │   ├── Devolucion.java
-│   │   ├── EstadoAlquiler.java
-│   │   ├── EstadoHerramienta.java
-│   │   ├── EstadoPago.java
-│   │   ├── EstadoReserva.java
-│   │   ├── Facturacion.java
-│   │   ├── Herramienta.java
-│   │   ├── Inventario.java
-│   │   ├── MetodoPago.java
-│   │   ├── Notificacion.java
-│   │   ├── Pago.java
-│   │   ├── Proveedor.java
-│   │   ├── ReporteDano.java
-│   │   ├── Reserva.java
-│   │   ├── Rol.java
-│   │   ├── UnidadDevuelta.java
-│   │   └── Usuario.java
-│   ├── mapper/
-│   │   ├── AlquilerMapper.java
-│   │   ├── ClienteMapper.java
-│   │   ├── DevolucionMapper.java
-│   │   ├── FacturacionMapper.java
-│   │   ├── HerramientaMapper.java
-│   │   ├── PagoMapper.java
-│   │   ├── ProveedorMapper.java
-│   │   ├── ReporteDanoMapper.java
-│   │   └── ReservaMapper.java
-│   └── request/
-│       ├── AlquilerRequest.java
-│       ├── ClienteRequest.java
-│       ├── ClienteUpdateRequest.java
-│       ├── DevolucionRequest.java
-│       ├── EstadoReservaRequest.java
-│       ├── FacturacionRequest.java
-│       ├── HerramientaInventarioRequest.java
-│       ├── HerramientaRequest.java
-│       ├── PagoRequest.java
-│       ├── ProveedorRequest.java
-│       ├── ProveedorUpdateRequest.java
-│       ├── ReservaRequest.java
-│       └── UsuarioRequest.java
-├── estructura.txt
-└── infraestructure/
-    ├── controllers/
-    │   ├── AlquilerController.java
-    │   ├── CategoriaHerramientaController.java
-    │   ├── ClienteController.java
-    │   ├── DevolucionController.java
-    │   ├── FacturacionController.java
-    │   ├── HerramientaController.java
-    │   ├── InventarioController.java
-    │   ├── PagoController.java
-    │   ├── ProveedorController.java
-    │   ├── ReservaController.java
-    │   └── UsuarioController.java
-    ├── repositories/
-    │   ├── alquiler/
-    │   │   ├── AlquilerRepository.java
-    │   │   └── AlquilerServiceImpl.java
-    │   ├── cliente/
-    │   │   ├── ClienteRepository.java
-    │   │   └── ClienteServiceImpl.java
-    │   ├── devolucion/
-    │   │   ├── DevolucionRepository.java
-    │   │   └── DevolucionServiceImpl.java
-    │   ├── facturacion/
-    │   │   ├── FacturacionRepository.java
-    │   │   └── FacturacionServiceImpl.java
-    │   ├── herramienta/
-    │   │   ├── CategoriaHerramientaRepository.java
-    │   │   └── HerramientaRepository.java
-    │   ├── inventario/
-    │   │   ├── InventarioRepository.java
-    │   │   └── InventarioServiceImpl.java
-    │   ├── pago/
-    │   │   ├── PagoRepository.java
-    │   │   └── PagoServiceImpl.java
-    │   ├── proveedor/
-    │   │   ├── ProveedorRepository.java
-    │   │   └── ProveedorServiceImpl.java
-    │   ├── reporteDano/
-    │   │   └── ReporteDanoRepository.java
-    │   ├── reserva/
-    │   │   ├── ReservaRepository.java
-    │   │   └── ReservaServiceImpl.java
-    │   └── usuario/
-    │       ├── LoginRequest.java
-    │       ├── LoginResponse.java
-    │       ├── RolRepository.java
-    │       ├── UsuarioRepository.java
-    │       └── UsuarioServiceImpl.java
-    ├── security/
-    │   └── SecurityConfig.java
-    └── utils/
-        └── exceptions/
-            ├── GlobalExceptionHandler.java
-            └── ResourceNotFoundException.java
+![alt text](<Captura de pantalla 2025-05-26 080844.png>)
+![alt text](<Captura de pantalla 2025-05-26 080906.png>)
+![alt text](<Captura de pantalla 2025-05-26 080937.png>)
+![alt text](<Captura de pantalla 2025-05-26 080955.png>)
 
 
 # Crea una base de datos en PostgreSQL (por ejemplo alquiler_herramientas).
@@ -174,14 +37,20 @@ Este proyecto es una API REST construida con Spring Boot para gestionar el alqui
 
 1. Clona el repositorio:
    
-   # Clonar el repositorio
-git clone https://github.com/wilmer7522/Proyecto_RentaHerramientas_BustamanteJesus_RojasWilmer.git
+# Clonar el repositorio
+git clone 
+~~~
+https://github.com/wilmer7522/Proyecto_RentaHerramientas_BustamanteJesus_RojasWilmer.git
+~~~
 
 # Entrar al directorio del proyecto
+~~~
 cd Proyecto_RentaHerramientas_BustamanteJesus_RojasWilmer
+~~~
 
 Configura tu archivo application.properties
 
+~~~
 spring.datasource.url=jdbc:postgresql://localhost:5432/alquiler_herramientas
 spring.datasource.username=tu_usuario
 spring.datasource.password=tu_contraseña
@@ -192,8 +61,160 @@ spring.jpa.properties.hibernate.format_sql=true
 
 springdoc.api-docs.path=/api-docs
 springdoc.swagger-ui.path=/swagger-ui.html
+~~~
 
+- Ejecuta el proyecto
 
+Desde tu IDE, ejecuta la clase **HerramientaApplication.java**
+
+- O bien desde la terminal: 
+~~~
+./mvnw spring-boot:run
+~~~
+
+- Si usas PowerShell o CMD y tienes Maven instalado globalmente:
+~~~
+mvn spring-boot:run
+~~~
+
+- Accede a la API
+
+Una vez ejecutado correctamente, abre tu navegador y visita:
+~~~
+http://localhost:8080/
+~~~
+
+Endpoints: 
+| Módulo        | Endpoint base     | Descripción                       |
+| ------------- | ----------------- | --------------------------------- |
+| Proveedores   | /auth/supliers    | Registro y gestión de proveedores |
+| Herramientas  | /service/herramientas   | CRUD herramientas por proveedor   |
+| Clientes      | /auth/client       | Registro y consulta de clientes   |
+| Reservas      | /service/reservas       | Crear y aprobar reservas          |
+| Devoluciones  | /service/devolucion   | Registrar devoluciones            |
+| Facturación   | /service/facturacion    | Generar y consultar facturas      |
+| Inventario    | /service/inventario     | Consulta y gestión de stock       |
+
+Ejemplos de uso de endpoints:
+
+- http://localhost:8080/auth/client
+~~~
+POST Cliente {
+    "correo": "alexfuentes@gmail.com",
+    "password": "rojas123!",
+    "nombre": "Alexander",
+    "apellido": "Rojas",
+    "telefono": "3118530131",
+    "direccion": "Carrera 4 #3-4, Cúcuta",
+    "cedula": "1232315468",
+    "idRol":  3
+}
+~~~
+- http://localhost:8080/auth/suppliers
+~~~
+POST Proveedor {
+    "correo": "proveedor@ejemplo.com",
+    "password": "ClaveSegura123",
+    "nombre": "Proveedor S.A.",
+    "telefono": "3001234567",
+    "direccion": "Calle 123",
+    "nit": "123456789-0"
+}
+~~~
+- http://localhost:8080/service/reserve
+~~~
+POST Reserva {
+  "idCliente": 15,
+  "herramientas": [
+    {
+      "id": 4,
+      "cantidad": 2
+    },
+    {
+      "id": 5,
+      "cantidad": 5
+    }
+  ],
+  "fechaReserva": "",
+  "fechaInicio": "2025-05-23",
+  "fechaFin": "2025-05-25",
+  "estado_reserva": "PENDIENTE"
+}
+~~~
+- http://localhost:8080/service/reserves/{id}/estado
+~~~
+PATCH Reserva {
+
+  "estado": "ACEPTADA"
+}
+~~~
+- http://localhost:8080/service/alquiler
+~~~
+POST Alquiler {
+  "idReserva": 11
+}
+~~~
+- http://localhost:8080/service/devolucion
+~~~
+PATCH Devoluvion {
+  "alquilerId": 21,
+  "herramientas": [
+    {
+      "herramientaId": 4,
+      "devoluciones": [
+        { "danada": true, "descripcion": "Mango partido" },
+        { "danada": false, "descripcion": null }
+      ]
+    },
+    {
+      "herramientaId": 5,
+      "devoluciones": [
+        { "danada": false, "descripcion": null },
+        { "danada": false, "descripcion": null },
+        { "danada": false, "descripcion": null },
+        { "danada": false, "descripcion": null },
+        { "danada": false, "descripcion": null }
+      ]
+    }
+  ]
+}
+~~~
+- http://localhost:8080/service/pago
+~~~
+POST Pago {
+  "monto": 1,
+  "fechaPago": "2025-05-25",
+  "estadoPago": "",
+  "metodoPago": "TARJETA",
+  "alquilerId": 21
+}
+~~~
+- http://localhost:8080/service/factura
+~~~
+POST Factura {
+  "total": 1.0,
+  "pagoId": 21,
+  "proveedorId": 3
+}
+~~~
+- http://localhost:8080/service/inventario/agregar
+~~~
+POST Inventario {
+  "herramienta": {
+    "nombre": "Taladro Eléctrico",
+    "descripcion": "Taladro de 500W con velocidad variable",
+    "costo_dia": 15000,
+    "disponible": true,
+    "estadoHerramienta": "BUENA",
+    "categoriaId": 1
+  },
+  "id_proveedor": 3,
+  "cantidad": 10
+}
+~~~
 
 
 ![ER_RentaHerramita](https://github.com/user-attachments/assets/b0d187c3-b551-49f7-a338-5203182b18e5)
+
+
+### Desarrollado por Jesús Bustamante y Wilmer Rojas
