@@ -40,7 +40,7 @@ public class DetalleAlquiler {
     private int cantidad_dias;
 
     @Column(nullable = false)
-    private int cantidad; // NUEVO: Cantidad de unidades alquiladas
+    private int cantidad;
 
     @Column(nullable = false)
     private double precio_unitario;

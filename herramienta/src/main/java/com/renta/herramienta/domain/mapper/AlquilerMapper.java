@@ -26,8 +26,7 @@ public class AlquilerMapper {
         }
 
         if (alquiler.getReserva() != null && alquiler.getReserva().getDetalleReserva() != null) {
-            // Mapear herramientas desde detalleReserva para incluir cantidad y demás info
-            // si se requiere
+            
             dto.setHerramientas(
                     alquiler.getReserva().getDetalleReserva()
                             .stream()

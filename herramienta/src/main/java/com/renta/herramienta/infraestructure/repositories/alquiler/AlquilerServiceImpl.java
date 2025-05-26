@@ -30,7 +30,7 @@ public class AlquilerServiceImpl implements AlquilerService {
     private final AlquilerRepository alquilerRepository;
     private final ReservaRepository reservaRepository;
     private final HerramientaRepository herramientaRepository;
-    private final InventarioService inventarioService; // ✅ Usamos el servicio, no el repositorio
+    private final InventarioService inventarioService; 
 
     public AlquilerServiceImpl(
             AlquilerRepository alquilerRepository,

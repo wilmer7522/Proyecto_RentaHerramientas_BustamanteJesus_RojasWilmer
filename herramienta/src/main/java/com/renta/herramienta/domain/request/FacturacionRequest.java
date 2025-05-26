@@ -10,15 +10,15 @@ import lombok.Setter;
 @NotNull
 public class FacturacionRequest {
 
-    // El total se recibe directamente, aunque podría calcularse desde el pago asociado
+    
     @NotNull
     private double total;
 
-    // ID del pago asociado a la factura
+    
     @NotNull
     private Long pagoId;
 
-    // ID del proveedor que emite la factura
+    
     @NotNull
     private Long proveedorId;
 

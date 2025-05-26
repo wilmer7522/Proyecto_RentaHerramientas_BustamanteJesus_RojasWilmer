@@ -19,7 +19,7 @@ public class ReservaMapper {
         List<HerramientaCantidadDTO> herramientas = reserva.getDetalleReserva().stream()
             .map((DetalleReserva detalle) -> new HerramientaCantidadDTO(
                 detalle.getHerramienta().getId(),
-                null, detalle.getCantidad() // aquí sólo el id y cantidad porque ReservaRequest no necesita nombre
+                null, detalle.getCantidad() 
             ))
             .collect(Collectors.toList());
 

@@ -78,16 +78,16 @@ public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
 
     @Transactional
     public Proveedor createNewProveedor(ProveedorRequest request) {
-        // 1. Validar correo único
+        //  Validar correo único
         if (proveedorRepository.existsByCorreo(request.getCorreo())) {
             throw new RuntimeException("El correo ya está registrado");
         }
 
-        // 2. Obtener rol
+        //  Obtener rol
         Rol rolProveedor = new Rol();
         rolProveedor.setId(2L); 
 
-        // 3. Crear proveedor
+        // Crear proveedor
         Proveedor proveedor = new Proveedor();
         proveedor.setCorreo(request.getCorreo());
         proveedor.setPassword(passwordEncoder.encode(request.getPassword()));

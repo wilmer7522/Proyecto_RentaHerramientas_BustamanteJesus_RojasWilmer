@@ -24,7 +24,7 @@ public class FacturacionMapper {
         dto.setPagoId(facturacion.getPago().getId());
         dto.setProveedor(ProveedorMapper.toDTO(facturacion.getProveedor()));
 
-        // Extraer cliente desde alquiler
+        
         if (facturacion.getPago().getAlquiler() != null) {
             Alquiler alquiler = facturacion.getPago().getAlquiler();
             dto.setNombreCliente(alquiler.getCliente().getNombre());
@@ -33,11 +33,11 @@ public class FacturacionMapper {
 
             List<DetalleFacturaDTO> detalles = alquiler.getDetalle().stream().map(h -> {
                 DetalleFacturaDTO detalle = new DetalleFacturaDTO();
-                detalle.setNombreHerramienta(h.getHerramienta().getNombre()); // Nombre herramienta
+                detalle.setNombreHerramienta(h.getHerramienta().getNombre()); 
                 detalle.setCostoPorDia(h.getPrecio_unitario());
                 detalle.setDiasAlquiler(dias);
-                detalle.setCantidad(h.getCantidad());  // <-- Agregado cantidad
-                detalle.setTotalPorHerramienta(h.getPrecio_unitario() * dias * h.getCantidad()); // Precio * días * cantidad
+                detalle.setCantidad(h.getCantidad());  
+                detalle.setTotalPorHerramienta(h.getPrecio_unitario() * dias * h.getCantidad()); 
                 return detalle;
             }).toList();
 

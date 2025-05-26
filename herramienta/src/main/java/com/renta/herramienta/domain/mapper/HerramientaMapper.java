@@ -17,12 +17,12 @@ public class HerramientaMapper {
     @Autowired
     private CategoriaHerramientaRepository categoriaRepository;
 
-    // Para vistas simples como reserva
+    
     public HerramientaDTO toDTO(Herramienta herramienta) {
         return new HerramientaDTO(herramienta.getId(), herramienta.getNombre());
     }
 
-    // Para vistas detalladas en inventario
+    
     public HerramientaInventarioDTO toInventarioDTO(Herramienta herramienta) {
         HerramientaInventarioDTO dto = new HerramientaInventarioDTO();
         dto.setId(herramienta.getId());
@@ -39,7 +39,7 @@ public class HerramientaMapper {
         return dto;
     }
 
-    // Para creación de herramientas desde el request
+    
     public Herramienta toEntity(HerramientaRequest request) {
         if (request == null) {
             throw new IllegalArgumentException("HerramientaRequest no puede ser null");

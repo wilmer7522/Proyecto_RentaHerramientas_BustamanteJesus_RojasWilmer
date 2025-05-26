@@ -45,7 +45,7 @@ public class PagoServiceImpl implements PagoService {
 
         var alquiler = alquilerOpt.get();
 
-        // Opcional: validar si ya existe un pago para este alquiler
+        
         if (pagoRepository.existsByAlquiler(alquiler)) {
             throw new RuntimeException("Ya existe un pago registrado para este alquiler");
         }

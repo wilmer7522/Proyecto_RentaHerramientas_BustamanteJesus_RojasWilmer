@@ -25,7 +25,6 @@ public class DevolucionMapper {
         dto.setObservaciones(devolucion.getObservaciones());
         dto.setConfirmacionProveedor(devolucion.isConfirmacionProveedor());
 
-        // Convertir lista de Reporte_Dano a ReporteDanoDTO
         List<ReporteDanoDTO> reportes = devolucion.getReportesDano() != null
                 ? devolucion.getReportesDano().stream()
                         .map(ReporteDanoMapper::toDTO)

@@ -58,7 +58,7 @@ public class InventarioController {
         return ResponseEntity.ok(dtos);
     }
 
-    // ver todas las herramientas con detalles completos (incluye disponible)
+    // ver todas las herramientas con detalles completos
     @GetMapping("/inventario/todas")
     public ResponseEntity<List<HerramientaInventarioDTO>> obtenerTodasHerramientasConDetalles() {
         List<Herramienta> herramientas = herramientaService.getAllHerramientas();
