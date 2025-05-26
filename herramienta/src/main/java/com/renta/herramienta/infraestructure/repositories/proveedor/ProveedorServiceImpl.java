@@ -95,6 +95,9 @@ public class ProveedorServiceImpl implements ProveedorService {
         if (updates.getNit() != null) {
             proveedor.setNit(updates.getNit());
         }
+        if (updates.getCorreo() != null) {
+            proveedor.setCorreo(updates.getCorreo());
+        }
 
         return proveedorRepository.save(proveedor);
     }

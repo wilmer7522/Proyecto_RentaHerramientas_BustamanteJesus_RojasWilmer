@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import com.renta.herramienta.domain.request.PagoRequest;
 
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/service")
 public class PagoController {
@@ -31,11 +33,10 @@ public class PagoController {
     }
 
     @GetMapping("/pago")
-public ResponseEntity<List<PagoDTO>> listarPagos() {
-    List<PagoDTO> pagos = pagoService.listarPagos();
-    return ResponseEntity.ok(pagos);
-}
-
+    public ResponseEntity<List<PagoDTO>> listarPagos() {
+        List<PagoDTO> pagos = pagoService.listarPagos();
+        return ResponseEntity.ok(pagos);
+    }
 
     @PostMapping("/pago")
     public ResponseEntity<PagoDTO> crearPago(@RequestBody @Valid PagoRequest pagoRequest) {
@@ -45,16 +46,14 @@ public ResponseEntity<List<PagoDTO>> listarPagos() {
 
     @GetMapping("/pago/pendientes")
     public ResponseEntity<List<PagoDTO>> obtenerPagosPendientes() {
-    List<PagoDTO> pagosPendientes = pagoService.obtenerPagosPendientes();
-    return ResponseEntity.ok(pagosPendientes);
-}
-
+        List<PagoDTO> pagosPendientes = pagoService.obtenerPagosPendientes();
+        return ResponseEntity.ok(pagosPendientes);
+    }
 
     @GetMapping("/pago/{id}")
     public ResponseEntity<PagoDTO> obtenerPago(@PathVariable Long id) {
         PagoDTO pagoDTO = pagoService.obtenerPagoPorId(id);
         return ResponseEntity.ok(pagoDTO);
-
 
     }
 
@@ -69,7 +68,5 @@ public ResponseEntity<List<PagoDTO>> listarPagos() {
         PagoDTO resultado = pagoService.actualizarEstadoPago(id, EstadoPago.FALLIDO);
         return ResponseEntity.ok(resultado);
     }
-
-
 
 }

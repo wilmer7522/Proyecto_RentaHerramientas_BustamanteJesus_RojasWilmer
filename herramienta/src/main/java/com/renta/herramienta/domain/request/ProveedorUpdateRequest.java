@@ -10,4 +10,5 @@ public class ProveedorUpdateRequest {
     private String telefono;
     private String direccion;
     private String nit;
+    private String correo;
 }

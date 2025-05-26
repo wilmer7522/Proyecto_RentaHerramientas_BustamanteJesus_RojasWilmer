@@ -4,27 +4,15 @@
       <div class="header">
 
         <a href="http://localhost:5173/"><img id="logo" src="/src/assets/header/LogoSinFondo.png" alt="Logo" /></a>
-        
+
         <input v-model="filtro" id="categoria" type="text" placeholder="Herramientas" />
         <button id="buttonherramienta" @click="cargarHerramientas">Buscar</button>
 
-        <div class="sidebar">
-
-          <label class="burger" for="burger">
-            <input type="checkbox" id="burger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-
-        </div>
-
-        <div class="iconheader">
-          <button id="login">Iniciar Sesión</button>
-          <!-- <button><img src="./assets/header/user.png" alt=""></button>
-          <button><img src="./assets/header/heart.png" alt=""></button>
-          <button><img src="./assets/header/shopping-bag.png" alt=""></button> -->
-        </div>
+        <a id="redireccion" href="http://localhost:5173/admin">
+          <div class="iconheader">
+            <button id="login">Iniciar Sesión</button>
+          </div>
+        </a>
       </div>
 
       <div class="presentation">
@@ -36,7 +24,7 @@
           </p>
         </div>
 
-        <img id="collage" src="./assets/img/collage2.svg" alt="">
+        <img id="collage" src="../assets/img/collage2.svg" alt="">
 
         <div class="register">
           <input id="inputregister" type="text" placeholder="Correo Electrónico">
@@ -51,7 +39,7 @@
 
       <div class="filter">
         <button id="filterbutton" @click="toggleCategorias">
-          <img id="filtericon" src="./assets/icons/menu-filter.png" alt="">
+          <img id="filtericon" src="../assets/icons/menu-filter.png" alt="">
           <p id="tittlecategoria">Categoría</p>
         </button>
 
@@ -75,7 +63,7 @@
           <div class="imagen">
             <img :src="h.fotourl" alt="Imagen de herramienta" />
           </div>
-          
+
           <h3>{{ h.nombre }}</h3>
           <p>{{ h.descripcion }}</p>
           <p><strong>Costo por día: COP </strong> {{ h.costo_dia }}</p>
@@ -87,11 +75,11 @@
       <div class="paginacion" v-if="totalPaginas > 1">
 
         <button id="previous" @click="anteriorPagina" v-if="paginaActual > 1">
-          <span><img id="left" src="./assets/icons/left.png" alt=""></span> Página anterior
+          <span><img id="left" src="../assets/icons/left.png" alt=""></span> Página anterior
         </button>
 
         <button id="next" @click="siguientePagina" v-if="paginaActual < totalPaginas">
-          Página siguiente <span><img id="right" src="./assets/icons/right.png" alt=""></span>
+          Página siguiente <span><img id="right" src="../assets/icons/right.png" alt=""></span>
         </button>
 
       </div>
@@ -99,7 +87,7 @@
       <footer>
 
         <div class="brand">
-          <img id="logoicon" src="./assets/icons/logo.png" alt="">
+          <img id="logoicon" src="../assets/icons/logo.png" alt="">
           <p><span>RENTA</span> <br> HERRAMIENTA</p>
         </div>
 
@@ -117,15 +105,15 @@
 
           <span>Servicios</span>
           <button id="button1">
-            <img id="arrow" src="./assets/icons/yellowarrow.png" alt="">
+            <img id="arrow" src="../assets/icons/yellowarrow.png" alt="">
             <p>Reserva</p>
           </button>
           <button>
-            <img id="arrow" src="./assets/icons/yellowarrow.png" alt="">
+            <img id="arrow" src="../assets/icons/yellowarrow.png" alt="">
             <p>Alquiler</p>
           </button>
           <button>
-            <img id="arrow" src="./assets/icons/yellowarrow.png" alt="">
+            <img id="arrow" src="../assets/icons/yellowarrow.png" alt="">
             <p>Cotización</p>
           </button>
 
@@ -134,7 +122,7 @@
         <div class="help">
           <span>Ayuda</span>
           <button>
-            <img id="arrow" src="./assets/icons/yellowarrow.png" alt="">
+            <img id="arrow" src="../assets/icons/yellowarrow.png" alt="">
             <p>Contáctanos</p>
           </button>
         </div>
@@ -153,7 +141,7 @@
           <p>Desarrollado por Jesús Bustamante y Wilmer Rojas</p>
           <p id="copy">&copy;<span id="year">year</span> Renta Herramienta. Todos los derechos reservados.</p>
         </div>
-        
+
       </footer>
     </div>
 
@@ -268,29 +256,29 @@ onMounted(() => {
 </script>
 
 <style scoped>
-  @font-face {
+@font-face {
   font-family: "Monserrat Bold";
-  src: url(./assets/fonts/Montserrat-Bold.ttf);
+  src: url(../assets/fonts/Montserrat-Bold.ttf);
 }
 
 @font-face {
   font-family: "Inter Light";
-  src: url(./assets/fonts/Inter_28pt-Light.ttf);
+  src: url(../assets/fonts/Inter_28pt-Light.ttf);
 }
 
 @font-face {
   font-family: "Monserrat Light";
-  src: url(./assets/fonts/Montserrat-Light.ttf);
+  src: url(../assets/fonts/Montserrat-Light.ttf);
 }
 
 @font-face {
   font-family: "Monserrat Regular";
-  src: url(./assets/fonts/Montserrat-Regular.ttf);
+  src: url(../assets/fonts/Montserrat-Regular.ttf);
 }
 
 @font-face {
   font-family: "Monserrat SemiBold";
-  src: url(./assets/fonts/Montserrat-SemiBold.ttf);
+  src: url(../assets/fonts/Montserrat-SemiBold.ttf);
 }
 
 .main-screen {
@@ -307,7 +295,7 @@ onMounted(() => {
   top: 0;
   height: 5vw;
   width: 100%;
-  background-color: rgba(9, 14, 38, 0.5);
+  background-color: #141414;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
@@ -317,6 +305,7 @@ onMounted(() => {
 }
 
 #logo {
+  margin-top: 0.8vw;
   width: 10vw;
   height: auto;
   margin-left: 10vw
@@ -331,6 +320,7 @@ onMounted(() => {
   border-style: none;
   font-size: 1vw;
   font-family: "Inter Light";
+  border: 0.1vw solid #9da4b0;
 }
 
 #buttonherramienta {
@@ -350,89 +340,25 @@ onMounted(() => {
   justify-content: center;
 }
 
-.burger {
-  position: absolute;
-  top: 1.5vw;
-  left: 2vw;
-  width: 2.5vw;
-  height: 2vw;
-  background: transparent;
-  cursor: pointer;
-  display: block;
-  z-index: 2;
-}
-
-.burger input {
-  display: none;
-}
-
-.burger span {
-  display: block;
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  background: #fabc11;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: .25s ease-in-out;
-}
-
-.burger span:nth-of-type(1) {
-  top: 0px;
-  transform-origin: left center;
-}
-
-.burger span:nth-of-type(2) {
-  top: 50%;
-  transform: translateY(-50%);
-  transform-origin: left center;
-}
-
-.burger span:nth-of-type(3) {
-  top: 100%;
-  transform-origin: left center;
-  transform: translateY(-100%);
-}
-
-.burger input:checked ~ span:nth-of-type(1) {
-  transform: rotate(45deg);
-  top: 0px;
-  left: 5px;
-}
-
-.burger input:checked ~ span:nth-of-type(2) {
-  width: 0%;
-  opacity: 0;
-}
-
-.burger input:checked ~ span:nth-of-type(3) {
-  transform: rotate(-45deg);
-  top: 28px;
-  left: 5px;
-}
-
 .iconheader {
   display: flex;
   align-items: center;
   margin-left: 13.7vw;
 }
 
-/* .iconheader img {
-  width: 2vw;
-} */
-
 .iconheader button {
   background-color: transparent;
-  border: 0.1vw solid #7178b0;
+  border: 0.1vw solid #fabc11;
   border-radius: 0.5vw;
   cursor: pointer;
   font-size: 1vw;
   font-family: "Monserrat SemiBold";
-  color: #7178b0;
+  color: #fabc11;
   width: 8vw;
   height: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .iconheader button:hover {
@@ -440,17 +366,19 @@ onMounted(() => {
   color: #000;
 }
 
+#redireccion {
+  text-decoration: none;
+}
+
 .presentation {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color: #090e26;
-  background-image: radial-gradient(
-    circle at top,
-    rgba(101, 91, 238, 0.15),
-    rgba(9, 14, 38, 1)
-  );
+  background-color: #0a0a0a;
+  /* background-image: radial-gradient(circle at top,
+      rgba(101, 91, 238, 0.15),
+      rgba(9, 14, 38, 1)); */
   background-repeat: no-repeat;
   background-size: cover;
   color: #f1f5f9;
@@ -478,7 +406,7 @@ onMounted(() => {
   top: 10vw;
   right: 0vw;
   opacity: 1;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, .8));
+  filter: drop-shadow(0 0 10px rgb(250, 188, 17));
 }
 
 .register {
@@ -495,6 +423,7 @@ onMounted(() => {
   font-family: "Inter Light";
   border-style: none;
   border-radius: 0.5vw;
+  border: 0.1vw solid #9da4b0;
 }
 
 #buttonRegister {
@@ -523,7 +452,7 @@ onMounted(() => {
   align-items: center;
   top: 47.5vw;
   left: 0;
-  background-color: #0d122e;
+  background-color: #0a0a0a;
 }
 
 .filter {
@@ -575,7 +504,7 @@ onMounted(() => {
   font-family: "Monserrat Light";
   font-size: 0.8vw;
   transition: font-size 0.5s;
-  background-color: #7178b0;
+  background-color: #fabc11;
   height: 2vw;
 }
 
@@ -615,7 +544,8 @@ onMounted(() => {
   height: 10vw;
 }
 
-.card h3, .card strong {
+.card h3,
+.card strong {
   font-family: "Monserrat Bold";
 }
 
@@ -644,8 +574,10 @@ onMounted(() => {
 }
 
 .paginacion button:active {
-  background-color: #fabc11; /* Color temporal al presionar */
-  transform: scale(0.98); /* Leve efecto de clic */
+  background-color: #fabc11;
+  /* Color temporal al presionar */
+  transform: scale(0.98);
+  /* Leve efecto de clic */
 }
 
 
@@ -661,7 +593,8 @@ onMounted(() => {
   font-size: 1vw;
 }
 
-#left, #right {
+#left,
+#right {
   margin-top: 0.4vw;
   width: 2vw;
 }
@@ -680,12 +613,10 @@ onMounted(() => {
 
 footer {
   margin-top: 5vw;
-  background-color: #090e26;
-  background-image: linear-gradient(
-    to top,
-    #0f1c4f,
-    #0d122e
-  );
+  background-color: #0a0a0a;
+  /* background-image: linear-gradient(to top,
+      #0a0a0a,
+      #0d122e); */
   width: 100%;
   border-left: 2vw;
   border-right: 2vw;
@@ -700,7 +631,7 @@ footer {
   margin-left: 10vw;
   width: 80%;
   height: 0.1vw;
-  background-color: #292f54;
+  background-color: #141414;
 }
 
 .footer-separador2 {
@@ -708,7 +639,7 @@ footer {
   margin-left: 10vw;
   width: 80%;
   height: 0.1vw;
-  background-color: #292f54;
+  background-color: #141414;
 }
 
 .brand {
@@ -736,7 +667,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #7178b0;
+  color: #9da4b0;
   font-size: 0.9vw;
   font-family: "Monserrat Light";
 }
@@ -766,7 +697,7 @@ footer {
   margin-left: 0.5vw;
   font-size: 1vw;
   font-family: "Monserrat Bold";
-  color: #7178b0;
+  color: #9da4b0;
 }
 
 .services p {
@@ -780,7 +711,7 @@ footer {
 #arrow {
   transition: transform 0.3s ease;
   width: 2vw;
-  background-color: #1c1f4d;
+  background-color: #141414;
   border-radius: 1vw;
 }
 
@@ -813,7 +744,7 @@ footer {
   margin-left: 0.5vw;
   font-size: 1vw;
   font-family: "Monserrat Bold";
-  color: #7178b0;
+  color: #9da4b0;
 }
 
 .help p {
@@ -834,7 +765,7 @@ footer {
 
 .moreinfo span {
   font-size: 1vw;
-  color: #7178b0;
+  color: #9da4b0;
   font-family: "Monserrat Bold";
 }
 
@@ -845,7 +776,7 @@ footer {
 
 .updates span {
   font-size: 1vw;
-  color: #7178b0;
+  color: #9da4b0;
   font-family: "Monserrat Bold";
 }
 
@@ -857,12 +788,12 @@ footer {
   width: 20vw;
   height: 2vw;
   border-radius: 0.5vw;
-  border: 0.1vw solid #7178b0;
+  border: 0.1vw solid #9da4b0;
   background-color: transparent;
   text-indent: 1vw;
   font-size: 1vw;
   font-family: "Inter Light";
-  color: #7178b0;
+  color: #9da4b0;
 }
 
 #enviar {

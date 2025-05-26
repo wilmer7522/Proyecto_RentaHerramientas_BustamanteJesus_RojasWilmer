@@ -11,4 +11,5 @@ public class ClienteUpdateRequest {
     private String telefono;
     private String direccion;
     private String cedula;
+    private String correo;
 }
