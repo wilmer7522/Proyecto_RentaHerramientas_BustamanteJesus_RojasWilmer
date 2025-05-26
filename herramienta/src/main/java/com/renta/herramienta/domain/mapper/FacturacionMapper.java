@@ -22,8 +22,7 @@ public class FacturacionMapper {
         dto.setTotal(facturacion.getTotal());
         dto.setNumeroFactura(facturacion.getNumeroFactura());
         dto.setPagoId(facturacion.getPago().getId());
-        dto.setProveedorId(facturacion.getProveedor().getId());
-        dto.setNombreProveedor(facturacion.getProveedor().getNombre());
+        dto.setProveedor(ProveedorMapper.toDTO(facturacion.getProveedor()));
 
         // Extraer cliente desde alquiler
         if (facturacion.getPago().getAlquiler() != null) {

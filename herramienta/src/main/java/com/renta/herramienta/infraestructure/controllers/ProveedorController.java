@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.renta.herramienta.aplication.service.ProveedorService;
+import com.renta.herramienta.domain.dto.ProveedorDTO;
 import com.renta.herramienta.domain.entities.Proveedor;
 import com.renta.herramienta.domain.request.ProveedorRequest;
 import com.renta.herramienta.domain.request.ProveedorUpdateRequest;
@@ -35,19 +36,19 @@ public class ProveedorController {
     }
 
     @GetMapping("/suppliers")
-    public ResponseEntity<List<Proveedor>> findAllProveedores(
+    public ResponseEntity<List<ProveedorDTO>> findAllProveedores(
             @RequestParam(name = "filter", defaultValue = "") String filter,
             @RequestParam(name = "value", defaultValue = "") String value) {
 
-        List<Proveedor> results = proveedorService.findAllProveedoresByFilter(filter, value);
+        List<ProveedorDTO> results = proveedorService.findAllProveedoresDTOByFilter(filter, value);
 
         return ResponseEntity.ok(results);
     }
 
     @PostMapping("/suppliers")
     @ResponseStatus(HttpStatus.CREATED)
-    public Proveedor crearProveedor(@Valid @RequestBody ProveedorRequest request) {
-        return proveedorService.createNewProveedor(request); // Envía el DTO completo
+    public ProveedorDTO crearProveedor(@Valid @RequestBody ProveedorRequest request) {
+        return proveedorService.createNewProveedorDTO(request); 
     }
 
     @DeleteMapping("/suppliers/{id}")

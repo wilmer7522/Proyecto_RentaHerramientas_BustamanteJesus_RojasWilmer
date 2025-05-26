@@ -1,14 +1,17 @@
 package com.renta.herramienta.infraestructure.repositories.proveedor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ProveedorService;
+import com.renta.herramienta.domain.dto.ProveedorDTO;
 import com.renta.herramienta.domain.entities.Proveedor;
 import com.renta.herramienta.domain.entities.Rol;
+import com.renta.herramienta.domain.mapper.ProveedorMapper;
 import com.renta.herramienta.domain.request.ProveedorRequest;
 import com.renta.herramienta.domain.request.ProveedorUpdateRequest;
 
@@ -37,6 +40,14 @@ public class ProveedorServiceImpl implements ProveedorService {
         return proveedor;
 
     }
+    @Override
+public List<ProveedorDTO> findAllProveedoresDTOByFilter(String filter, String value) {
+    List<Proveedor> proveedores = findAllProveedoresByFilter(filter, value); // usa el método existente
+    return proveedores.stream()
+            .map(ProveedorMapper::toDTO)
+            .collect(Collectors.toList());
+}
+
 
     @Override
     public List<Proveedor> findAllProveedoresByFilter(String filter, String value) {
@@ -51,6 +62,19 @@ public class ProveedorServiceImpl implements ProveedorService {
                 return proveedorRepository.findAll();
         }
     }
+    @Override
+public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
+    Proveedor proveedor = new Proveedor();
+    proveedor.setNombre(request.getNombre());
+    proveedor.setTelefono(request.getTelefono());
+    proveedor.setCorreo(request.getCorreo());
+    proveedor.setDireccion(request.getDireccion());
+
+    Proveedor guardado = proveedorRepository.save(proveedor);
+
+    return ProveedorMapper.toDTO(guardado);
+}
+
 
     @Transactional
     public Proveedor createNewProveedor(ProveedorRequest request) {
@@ -98,4 +122,5 @@ public class ProveedorServiceImpl implements ProveedorService {
 
         return proveedorRepository.save(proveedor);
     }
+    
 }

@@ -28,7 +28,7 @@ public class FacturaPdfGenerator {
                     .setBold().setFontSize(18).setTextAlignment(TextAlignment.CENTER));
             document.add(new Paragraph("Fecha de emisión: " + dto.getFechaEmision()));
             document.add(new Paragraph("Cliente: " + dto.getNombreCliente()));
-            document.add(new Paragraph("Proveedor: " + dto.getNombreProveedor()));
+            document.add(new Paragraph("Proveedor: " + dto.getProveedor().getNombre()));
             document.add(new Paragraph(" ")); // Espacio
     
             // Tabla de detalles con columna para Cantidad
