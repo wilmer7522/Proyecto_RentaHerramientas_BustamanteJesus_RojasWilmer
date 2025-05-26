@@ -1,0 +1,22 @@
+{
+    "configurations": [
+      
+      {
+        "type": "java",
+        "name": "PasswordGenerator",
+        "request": "launch",
+        "mainClass": "com.renta.herramienta.infraestructure.utils.PasswordGenerator",
+        "projectName": "herramienta"
+      },
+      {
+        "type": "java",
+        "name": "Spring Boot-HerramientaApplication<herramienta>",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "mainClass": "com.renta.herramienta.HerramientaApplication",
+        "projectName": "herramienta",
+        "envFile": "${workspaceFolder}/.env"
+      }
+    ]
+  }
+  
