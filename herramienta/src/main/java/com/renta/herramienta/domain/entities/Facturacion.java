@@ -37,12 +37,12 @@ public class Facturacion {
     @Column(nullable = false)
     private double total;
 
-    // Relación uno a uno con Pago (una factura por pago)
+    
     @OneToOne
     @JoinColumn(name = "id_pago", nullable = false, unique = true)
     private Pago pago;
 
-    // Relación muchos a uno con Proveedor (un proveedor puede tener varias facturas)
+    
     @ManyToOne
     @JoinColumn(name = "id_proveedor", nullable = false)
     @JsonBackReference

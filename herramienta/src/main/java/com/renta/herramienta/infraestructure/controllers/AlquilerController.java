@@ -44,7 +44,7 @@ public class AlquilerController {
     @GetMapping("/alquileres")
     public List<AlquilerDTO> listarAlquileres(@RequestParam(required = false) Long clienteId) {
         List<Alquiler> alquileres = (clienteId != null)
-                ? alquilerService.getAlquileresPorCliente(clienteId) // "/alquileres?clienteId={id} opcion para buscar por cliente"
+                ? alquilerService.getAlquileresPorCliente(clienteId)
                 : alquilerService.getAllAlquileres();
 
         return alquileres.stream()

@@ -20,8 +20,7 @@ public class FacturacionDTO {
     private String numeroFactura;
 
     private Long pagoId;
-    private Long proveedorId;
-    private String nombreProveedor;
+    private ProveedorDTO proveedor;
 
     private String nombreCliente;
     private List<DetalleFacturaDTO> detalles;

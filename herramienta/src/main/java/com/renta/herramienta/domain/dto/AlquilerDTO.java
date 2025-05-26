@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlquilerDTO {
-    
+
     private Long id;
     private Long idCliente;
     private String nombreCliente;
@@ -27,7 +27,9 @@ public class AlquilerDTO {
 
     private List<HerramientaDTO> herramientas;
 
-
     private List<DetalleAlquilerDTO> detalles;
+
+    private double total;
 }
+
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.PagoService;
 import com.renta.herramienta.domain.dto.PagoDTO;
+import com.renta.herramienta.domain.entities.DetalleAlquiler;
 import com.renta.herramienta.domain.entities.EstadoPago;
 import com.renta.herramienta.domain.entities.Pago;
 import com.renta.herramienta.domain.mapper.PagoMapper;
@@ -26,15 +27,14 @@ public class PagoServiceImpl implements PagoService {
         this.alquilerRepository = alquilerRepository;
     }
 
-    //Ver todos los pagos
+    // Ver todos los pagos
     @Override
-public List<PagoDTO> listarPagos() {
-    List<Pago> pagos = pagoRepository.findAll();
-    return pagos.stream()
+    public List<PagoDTO> listarPagos() {
+        List<Pago> pagos = pagoRepository.findAll();
+        return pagos.stream()
                 .map(PagoMapper::toDTO)
                 .collect(Collectors.toList());
-}
-
+    }
 
     @Override
     public PagoDTO registrarPago(PagoRequest request) {
@@ -45,14 +45,19 @@ public List<PagoDTO> listarPagos() {
 
         var alquiler = alquilerOpt.get();
 
-        // Opcional: validar si ya existe un pago para este alquiler
+        
         if (pagoRepository.existsByAlquiler(alquiler)) {
             throw new RuntimeException("Ya existe un pago registrado para este alquiler");
         }
 
+        double totalAlquiler = alquiler.getDetalle()
+                .stream()
+                .mapToDouble(DetalleAlquiler::getSubtotal)
+                .sum();
+
         Pago pago = new Pago();
         pago.setAlquiler(alquiler);
-        pago.setMonto(request.getMonto());
+        pago.setMonto(totalAlquiler);
         pago.setMetodoPago(request.getMetodoPago());
         pago.setEstadoPago(EstadoPago.PENDIENTE);
         pago.setFechaPago(LocalDate.now());
@@ -70,49 +75,43 @@ public List<PagoDTO> listarPagos() {
         return PagoMapper.toDTO(pagoOpt.get());
     }
 
-    //Confirmar pago
+    // Confirmar pago
     @Override
-public PagoDTO confirmarPago(Long id) {
-    Pago pago = pagoRepository.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado con id: " + id));
+    public PagoDTO confirmarPago(Long id) {
+        Pago pago = pagoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado con id: " + id));
 
-    if (pago.getEstadoPago() != EstadoPago.PENDIENTE) {
-        throw new IllegalStateException("El pago ya fue procesado o falló.");
+        if (pago.getEstadoPago() != EstadoPago.PENDIENTE) {
+            throw new IllegalStateException("El pago ya fue procesado o falló.");
+        }
+
+        pago.setEstadoPago(EstadoPago.COMPLETADO);
+        pagoRepository.save(pago);
+
+        return PagoMapper.toDTO(pago);
     }
 
-    pago.setEstadoPago(EstadoPago.COMPLETADO);
-    pagoRepository.save(pago);
+    @Override
+    public PagoDTO actualizarEstadoPago(Long id, EstadoPago nuevoEstado) {
+        Pago pago = pagoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado con ID: " + id));
 
-    return PagoMapper.toDTO(pago);
-}
+        if (pago.getEstadoPago() != EstadoPago.PENDIENTE) {
+            throw new IllegalStateException("El estado del pago ya fue procesado.");
+        }
 
+        pago.setEstadoPago(nuevoEstado);
+        pagoRepository.save(pago);
 
-@Override
-public PagoDTO actualizarEstadoPago(Long id, EstadoPago nuevoEstado) {
-    Pago pago = pagoRepository.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado con ID: " + id));
-
-    if (pago.getEstadoPago() != EstadoPago.PENDIENTE) {
-        throw new IllegalStateException("El estado del pago ya fue procesado.");
+        return PagoMapper.toDTO(pago);
     }
 
-    pago.setEstadoPago(nuevoEstado);
-    pagoRepository.save(pago);
-
-    return PagoMapper.toDTO(pago);
-}
-
-
-@Override
-public List<PagoDTO> obtenerPagosPendientes() {
-    List<Pago> pagosPendientes = pagoRepository.findByEstadoPago(EstadoPago.PENDIENTE);
-    return pagosPendientes.stream()
-            .map(PagoMapper::toDTO)
-            .collect(Collectors.toList());
-}
-
-
-
+    @Override
+    public List<PagoDTO> obtenerPagosPendientes() {
+        List<Pago> pagosPendientes = pagoRepository.findByEstadoPago(EstadoPago.PENDIENTE);
+        return pagosPendientes.stream()
+                .map(PagoMapper::toDTO)
+                .collect(Collectors.toList());
+    }
 
 }
-

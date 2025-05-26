@@ -10,13 +10,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "proveedor")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Proveedor extends Usuario{
     
     @Column(nullable = false)
@@ -42,34 +46,7 @@ public class Proveedor extends Usuario{
     @JsonIgnore
     private List<Aprobacion> aprobacion;
 
-    public Proveedor() {
-    }
-
-    public Proveedor(String nombre, String telefono, String direccion, String nit, List<Facturacion> facturas,
-            List<Inventario> inventarios, List<Notificacion> notificacion, List<Aprobacion> aprobacion) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.nit = nit;
-        this.facturas = facturas;
-        this.inventarios = inventarios;
-        this.notificacion = notificacion;
-        this.aprobacion = aprobacion;
-    }
-
-    public Proveedor(Long id, String correo, String password, Rol rol, String nombre, String telefono, String direccion,
-            String nit, List<Facturacion> facturas, List<Inventario> inventarios, List<Notificacion> notificacion,
-            List<Aprobacion> aprobacion) {
-        super(id, correo, password, rol);
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.nit = nit;
-        this.facturas = facturas;
-        this.inventarios = inventarios;
-        this.notificacion = notificacion;
-        this.aprobacion = aprobacion;
-    }
+   
 
     
 }

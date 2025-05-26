@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DevolucionRequest {
     private Long alquilerId;
-    private List<DetalleDevolucionPorHerramienta> herramientas; // Cada herramienta con sus unidades devueltas
+    private List<DetalleDevolucionPorHerramienta> herramientas;
 }
 
 

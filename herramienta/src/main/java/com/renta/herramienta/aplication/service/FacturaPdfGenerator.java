@@ -28,10 +28,10 @@ public class FacturaPdfGenerator {
                     .setBold().setFontSize(18).setTextAlignment(TextAlignment.CENTER));
             document.add(new Paragraph("Fecha de emisión: " + dto.getFechaEmision()));
             document.add(new Paragraph("Cliente: " + dto.getNombreCliente()));
-            document.add(new Paragraph("Proveedor: " + dto.getNombreProveedor()));
-            document.add(new Paragraph(" ")); // Espacio
+            document.add(new Paragraph("Proveedor: " + dto.getProveedor().getNombre()));
+            document.add(new Paragraph(" "));
     
-            // Tabla de detalles con columna para Cantidad
+            
             Table table = new Table(UnitValue.createPercentArray(new float[]{4, 2, 2, 1, 2}))
                     .useAllAvailableWidth();
     
@@ -45,7 +45,7 @@ public class FacturaPdfGenerator {
                 table.addCell(detalle.getNombreHerramienta());
                 table.addCell("$" + detalle.getCostoPorDia());
                 table.addCell(String.valueOf(detalle.getDiasAlquiler()));
-                table.addCell(String.valueOf(detalle.getCantidad())); // Mostrar cantidad
+                table.addCell(String.valueOf(detalle.getCantidad())); 
                 table.addCell("$" + detalle.getTotalPorHerramienta());
             }
     
