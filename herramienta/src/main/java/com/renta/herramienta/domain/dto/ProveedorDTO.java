@@ -15,4 +15,5 @@ public class ProveedorDTO {
     private String telefono;
     private String correo;
     private String direccion;
+    private String nit;
 }
