@@ -24,7 +24,7 @@ Este proyecto es una API REST construida con Spring Boot para gestionar el alqui
 
 ## 📁 Estructura del Proyecto
 
-[estructura.txt](https://github.com/user-attachments/files/20441133/estructura.txt)./
+./
 ├── HerramientaApplication.java
 ├── aplication/
 │   └── service/
