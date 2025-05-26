@@ -24,7 +24,7 @@ public class ProveedorServiceImpl implements ProveedorService {
     private final ProveedorRepository proveedorRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder; // Inyecta el bean
+    private PasswordEncoder passwordEncoder;
 
     public ProveedorServiceImpl(ProveedorRepository proveedorRepository) {
         this.proveedorRepository = proveedorRepository;
@@ -85,7 +85,7 @@ public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
 
         // 2. Obtener rol
         Rol rolProveedor = new Rol();
-        rolProveedor.setId(2L); // Solo establece el ID sin consultar la BD
+        rolProveedor.setId(2L); 
 
         // 3. Crear proveedor
         Proveedor proveedor = new Proveedor();
