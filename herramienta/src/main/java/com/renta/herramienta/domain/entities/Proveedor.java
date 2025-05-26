@@ -3,8 +3,7 @@ package com.renta.herramienta.domain.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -32,19 +31,19 @@ public class Proveedor extends Usuario{
     private String nit;
 
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Facturacion> facturas = new ArrayList<>();
 
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Inventario> inventarios = new ArrayList<>();
 
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Notificacion> notificacion = new ArrayList<>();
 
     @OneToMany(mappedBy = "proveedor")
-    @JsonBackReference
+    @JsonIgnore
     private List<Aprobacion> aprobacion;
 
    

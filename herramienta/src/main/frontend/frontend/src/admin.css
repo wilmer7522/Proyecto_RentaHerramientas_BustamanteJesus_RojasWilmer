@@ -1,0 +1,395 @@
+@font-face {
+    font-family: "Monserrat Bold";
+    src: url(../assets/fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Inter Light";
+    src: url(../assets/fonts/Inter_28pt-Light.ttf);
+}
+
+@font-face {
+    font-family: "Monserrat Light";
+    src: url(../assets/fonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: "Monserrat Regular";
+    src: url(../assets/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Monserrat SemiBold";
+    src: url(../assets/fonts/Montserrat-SemiBold.ttf);
+}
+
+.main-screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0a0a0a;
+}
+
+
+.header {
+    position: sticky;
+    top: 0;
+    left: -10vw;
+    height: 5vw;
+    width: 100%;
+    background-color: #141414;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1vw solid #1a191c;
+    z-index: 2;
+}
+
+#logo {
+    margin-top: -2vw;
+    width: 10vw;
+    height: auto;
+    margin-left: 1vw;
+}
+
+#userimg {
+    width: 2vw;
+}
+
+#user {
+    margin-left: 90%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    width: 15vw;
+    height: 100vh;
+    background-color: #0f0f0f;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    z-index: 3;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 0.5vw;
+    transition: background 0.3s ease;
+    color: #8a888f;
+    font-family: "Monserrat SemiBold";
+}
+
+.menu-button:hover {
+    background-image: linear-gradient(to right, #CE9B0E, transparent);
+    color: #0f0f0f;
+}
+
+.menu-button:hover .menu-icon {
+    background-color: #fabc11;
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 2vw;
+    margin-top: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vw;
+    font-family: "Monserrat Regular";
+    color: #8a888f;
+}
+
+.submenu li {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.submenu li:hover {
+    background-image: linear-gradient(to right, #fabc11, transparent);
+    color: #0f0f0f;
+}
+
+.submenu li.activo {
+    background-image: linear-gradient(to right, #fabc11, transparent);
+    color: #0f0f0f;
+    font-family: "Monserrat SemiBold";
+}
+
+/* Animación opcional */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+    transition: all 0.2s ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+
+.tablero {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#welcome {
+    font-size: 5vw;
+    font-family: "Monserrat Bold";
+    color: white
+}
+
+#question {
+    font-size: 2vw;
+    font-family: "Monserrat Regular";
+    color: #7178b0;
+    text-shadow: #7178b0;
+}
+
+.cliente, .proveedor, .alquiler, .reporte-dano, .pagos {
+    margin-top: 1vw;
+    margin-left: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: calc(100% - 15vw);
+}
+
+#tablita {
+    z-index: 1;
+    width: 110%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #141414;
+    border: 0.1vw solid #141414;
+    text-align: center;
+    border-radius: 0.5vw;
+    overflow: hidden;
+}
+
+#tablita1 {
+    z-index: 1;
+    width: 110%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 0.1vw solid #141414;
+    background-color: #141414;
+    text-align: center;
+    border-radius: 0.5vw;
+    overflow: hidden;
+}
+
+#tabla2 tbody tr td{
+    background-color: #141414;
+    color: #f7f7f7;
+    border: 0.1vw solid #141414;
+    font-family: "Monserrat Light";
+} 
+
+.thead-dark tr th {
+    background-color: #1a191c;
+    color: #f7f7f7;
+    font-family: "Monserrat SemiBold";
+    border: none;
+}
+
+th {
+    font-size: 1vw;
+    font-family: "Monserrat Bold";
+    color: #f7f7f7;
+    background-color: #1a191c;
+}
+
+td {
+    font-size: 1vw;
+    font-family: "Monserrat Light";
+    color: #f7f7f7;
+}
+
+input {
+    width: 100%;
+    padding: 4px;
+}
+
+button {
+    margin-right: 5px;
+}
+
+#acciones {
+    display: flex;
+}
+
+#edit, #delete {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#edit img, #delete img{
+    width: 1.5vw;
+}
+
+.mi-popup {
+    background-color: #1a191c;
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    font-family: "Monserrat SemiBold";
+}
+
+.mi-titulo {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #fabc11;
+    font-family: "Monserrat SemiBold";
+}
+
+.mi-boton-confirmar {
+    border: none;
+    background-color: #7bd647;
+    padding: 0.5vw;
+    font-size: 1vw;
+    font-family: "Monserrat Regular";
+    border-radius: 0.5vw;
+    cursor: pointer;
+}
+
+.mi-boton-cancelar {
+    border: none;
+    background-color: #CE9B0E;
+    padding: 0.5vw;
+    font-size: 1vw;
+    font-family: "Monserrat Regular";
+    border-radius: 0.5vw;
+    cursor: pointer;
+}
+
+input {
+    background-color: transparent;
+    color: #f7f7f7;
+    border: none;
+    font-size: 1vw;
+    font-family: "Monserrat Light";
+}
+
+#save, #cancel {
+    background-color: transparent;
+    border: none;
+}
+
+#save img , #cancel img {
+    width: 1.5vw;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+}
+
+.menu-icon {
+    width: 1.9vw;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+}
+
+#tittleclient {
+    position: relative;
+    margin-top: 7vw;
+    margin-left: 12vw;
+    color: #f7f7f7;
+    font-size: 3vw;
+    font-family: "Monserrat SemiBold";
+}
+
+.input-filtro {
+    position: relative;
+    margin-bottom: 1vw;
+    padding: 0.8vw;
+    width: 110%;
+    border: 1px solid #f7f7f7;
+    border-radius: 0.4vw;
+}
+
+#guardar input {
+    text-align: center;
+}
+
+#imgsave {
+    width: 1.5vw;
+}
+
+#buttonsave {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonsave:not([disabled]) {
+  cursor: pointer;
+}
+
+#buttonsave[disabled] img{
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#pp {
+    position: absolute;
+    color: white;
+    top: 20vw;
+    left: 40vw;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+#atras, #adelante {
+    z-index: 1;
+    background-color: transparent;
+    color: #8a888f;
+    font-size: 1vw;
+    font-family: "Monserrat Light";
+    border: 0.1vw solid #CE9B0E;
+    background-color: #CE9B0E;
+    color: black;
+    font-weight: bold;
+}
+
+#paginationcliente, #paginationProveedor, #paginationAlquiler, #paginationPago, #paginationDano {
+    z-index: 1;
+}
+
+.thead-dark {
+    background-color: #1a191c;
+}

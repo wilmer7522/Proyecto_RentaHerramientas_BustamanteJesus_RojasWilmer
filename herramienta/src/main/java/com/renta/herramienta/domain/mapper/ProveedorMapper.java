@@ -14,6 +14,7 @@ public class ProveedorMapper {
         dto.setTelefono(proveedor.getTelefono());
         dto.setCorreo(proveedor.getCorreo());
         dto.setDireccion(proveedor.getDireccion());
+        dto.setNit(proveedor.getNit());
 
         return dto;
     }
@@ -27,6 +28,7 @@ public class ProveedorMapper {
         proveedor.setTelefono(dto.getTelefono());
         proveedor.setCorreo(dto.getCorreo());
         proveedor.setDireccion(dto.getDireccion());
+        proveedor.setNit(dto.getNit());
 
         return proveedor;
     }

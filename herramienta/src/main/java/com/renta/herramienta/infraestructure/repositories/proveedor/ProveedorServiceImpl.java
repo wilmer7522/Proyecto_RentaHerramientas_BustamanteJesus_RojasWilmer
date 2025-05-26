@@ -29,7 +29,8 @@ public class ProveedorServiceImpl implements ProveedorService {
     public ProveedorServiceImpl(ProveedorRepository proveedorRepository) {
         this.proveedorRepository = proveedorRepository;
     }
-    //Delete
+
+    // Delete
     @Override
     @Transactional
     public Proveedor removeProveedor(Long id) {
@@ -40,14 +41,14 @@ public class ProveedorServiceImpl implements ProveedorService {
         return proveedor;
 
     }
-    @Override
-public List<ProveedorDTO> findAllProveedoresDTOByFilter(String filter, String value) {
-    List<Proveedor> proveedores = findAllProveedoresByFilter(filter, value); // usa el método existente
-    return proveedores.stream()
-            .map(ProveedorMapper::toDTO)
-            .collect(Collectors.toList());
-}
 
+    @Override
+    public List<ProveedorDTO> findAllProveedoresDTOByFilter(String filter, String value) {
+        List<Proveedor> proveedores = findAllProveedoresByFilter(filter, value); // usa el método existente
+        return proveedores.stream()
+                .map(ProveedorMapper::toDTO)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public List<Proveedor> findAllProveedoresByFilter(String filter, String value) {
@@ -62,30 +63,30 @@ public List<ProveedorDTO> findAllProveedoresDTOByFilter(String filter, String va
                 return proveedorRepository.findAll();
         }
     }
+
     @Override
-public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
-    Proveedor proveedor = new Proveedor();
-    proveedor.setNombre(request.getNombre());
-    proveedor.setTelefono(request.getTelefono());
-    proveedor.setCorreo(request.getCorreo());
-    proveedor.setDireccion(request.getDireccion());
+    public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
+        Proveedor proveedor = new Proveedor();
+        proveedor.setNombre(request.getNombre());
+        proveedor.setTelefono(request.getTelefono());
+        proveedor.setCorreo(request.getCorreo());
+        proveedor.setDireccion(request.getDireccion());
 
-    Proveedor guardado = proveedorRepository.save(proveedor);
+        Proveedor guardado = proveedorRepository.save(proveedor);
 
-    return ProveedorMapper.toDTO(guardado);
-}
-
+        return ProveedorMapper.toDTO(guardado);
+    }
 
     @Transactional
     public Proveedor createNewProveedor(ProveedorRequest request) {
-        //  Validar correo único
+        // Validar correo único
         if (proveedorRepository.existsByCorreo(request.getCorreo())) {
             throw new RuntimeException("El correo ya está registrado");
         }
 
-        //  Obtener rol
+        // Obtener rol
         Rol rolProveedor = new Rol();
-        rolProveedor.setId(2L); 
+        rolProveedor.setId(2L);
 
         // Crear proveedor
         Proveedor proveedor = new Proveedor();
@@ -119,8 +120,11 @@ public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
         if (updates.getNit() != null) {
             proveedor.setNit(updates.getNit());
         }
+        if (updates.getCorreo() != null) {
+            proveedor.setCorreo(updates.getCorreo());
+        }
 
         return proveedorRepository.save(proveedor);
     }
-    
+
 }

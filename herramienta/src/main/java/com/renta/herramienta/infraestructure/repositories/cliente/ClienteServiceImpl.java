@@ -82,6 +82,9 @@ public class ClienteServiceImpl implements ClienteService {
     if (clienteUpdateRequest.getCedula() != null) {
     clienteup.setCedula(clienteUpdateRequest.getCedula());
     }
+    if (clienteUpdateRequest.getCorreo() != null) {
+    clienteup.setCorreo(clienteUpdateRequest.getCorreo());
+    }
 
 return clienteRepository.save(clienteup);
     }
