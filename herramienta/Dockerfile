@@ -25,4 +25,5 @@ RUN ./mvnw package -DskipTests
 EXPOSE 8080
 
 # Comando para ejecutar la app empaquetada
-CMD ["java", "-jar", "target/*.jar"]
+CMD ["java", "-jar", "target/herramienta-0.0.1-SNAPSHOT.jar"]
+
