@@ -762,13 +762,21 @@ const filtroProveedor = ref('')
 const editandoProveedor = ref(null)
 const proveedorOriginal = ref(null)
 
-async function obtenerProveedores() {
+const obtenerProveedores = async () => {
   try {
-    const res = await fetch(`${apiUrl}/auth/suppliers`)
-    if (!res.ok) throw new Error('Error al obtener proveedores')
-    proveedores.value = await res.json()
+    const response = await fetch(`${apiUrl}/auth/suppliers`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`)
+    }
+
+    proveedores.value = await response.json()
   } catch (error) {
-    console.error(error)
+    console.error('Error al obtener clientes:', error)
   }
 }
 
