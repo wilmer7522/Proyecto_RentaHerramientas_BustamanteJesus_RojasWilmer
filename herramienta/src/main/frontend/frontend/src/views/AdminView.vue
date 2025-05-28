@@ -764,19 +764,11 @@ const proveedorOriginal = ref(null)
 
 const obtenerProveedores = async () => {
   try {
-    const response = await fetch(`${apiUrl}/auth/suppliers`, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-
-    if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`)
-    }
-
-    proveedores.value = await response.json()
+    const response = await axios.get(`${apiUrl}/auth/suppliers`)
+    console.log('Alquileres:', response.data)
+    proveedores.value = response.data
   } catch (error) {
-    console.error('Error al obtener clientes:', error)
+    console.error('Error al obtener alquileres:', error)
   }
 }
 
