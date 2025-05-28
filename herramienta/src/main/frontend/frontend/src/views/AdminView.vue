@@ -3,7 +3,7 @@
     <div class="main-screen">
 
       <div class="sidebar">
-        <a href="http://localhost:5173/admin"><img id="logo" src="/src/assets/header/LogoSinFondo.png" alt="Logo" /></a>
+        <a href="https://proyecto-renta-herramientas-bustama-sage.vercel.app/admin"><img id="logo" src="/src/assets/header/LogoSinFondo.png" alt="Logo" /></a>
 
         <div class="menu-item" v-for="(menu, index) in menus" :key="index">
           <button class="menu-button" @click="menu.opciones ? toggleMenu(index) : seleccionarOpcion(menu.nombre)">

@@ -190,7 +190,8 @@ function anteriorPagina() {
   if (paginaActual.value > 1) paginaActual.value--
 }
 
-const apiUrl = import.meta.env.VITE_API_URL
+// const apiUrl = import.meta.env.VITE_API_URL
+const apiUrl = "https://rentaherramientas-bustamantejesus.onrender.com"
 
 // Cargar herramientas desde el backend
 async function cargarHerramientas() {
