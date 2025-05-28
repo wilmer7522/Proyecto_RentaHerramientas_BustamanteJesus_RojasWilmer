@@ -66,11 +66,16 @@ public class ProveedorServiceImpl implements ProveedorService {
 
     @Override
     public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
+
+        // Obtener rol
+        Rol rolProveedor = new Rol();
+        rolProveedor.setId(2L);
         Proveedor proveedor = new Proveedor();
         proveedor.setNombre(request.getNombre());
         proveedor.setTelefono(request.getTelefono());
         proveedor.setCorreo(request.getCorreo());
         proveedor.setDireccion(request.getDireccion());
+        proveedor.setRol(rolProveedor);
 
         Proveedor guardado = proveedorRepository.save(proveedor);
 
