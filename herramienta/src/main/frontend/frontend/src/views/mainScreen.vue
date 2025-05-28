@@ -190,10 +190,11 @@ function anteriorPagina() {
   if (paginaActual.value > 1) paginaActual.value--
 }
 
+const apiUrl = import.meta.env.VITE_API_URL
 
 // Cargar herramientas desde el backend
 async function cargarHerramientas() {
-  let url = `${process.env.VUE_APP_API_URL}/tools`
+  let url = `${apiUrl}/tools`
 
   try {
     // Si hay filtro por nombre
@@ -223,7 +224,7 @@ async function cargarHerramientas() {
 // Cargar categorías
 async function cargarCategorias() {
   try {
-    const res = await fetch(`${process.env.VUE_APP_API_URL}/api/categorias`)
+    const res = await fetch(`${apiUrl}/api/categorias`)
     categorias.value = await res.json()
   } catch (error) {
     console.error('Error al cargar categorías:', error)

@@ -752,12 +752,15 @@ const filtroProveedor = ref('')
 const editandoProveedor = ref(null)
 const proveedorOriginal = ref(null)
 
-const obtenerProveedores = async () => {
+const apiUrl = import.meta.env.VITE_API_URL
+
+async function obtenerProveedores() {
   try {
-    const response = await axios.get(`${process.env.VUE_APP_API_URL}/auth/suppliers`)
-    proveedores.value = response.data
+    const res = await fetch(`${apiUrl}/auth/suppliers`)
+    if (!res.ok) throw new Error('Error al obtener proveedores')
+    proveedores.value = await res.json()
   } catch (error) {
-    console.error('Error al obtener proveedores:', error)
+    console.error(error)
   }
 }
 
@@ -930,9 +933,7 @@ const proveedoresFiltrados = computed(() => {
   })
 })
 
-onMounted(() => {
-  obtenerProveedores()
-})
+
 
 
 const paginaProveedor = ref(1)
