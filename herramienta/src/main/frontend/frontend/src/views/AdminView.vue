@@ -837,7 +837,7 @@ const agregarProveedor = async () => {
   }
 
   try {
-    await axios.post(`${import.meta.VITE_API_URL}/auth/suppliers`, {
+    await axios.post(`${import.meta.env.VITE_API_URL}/auth/suppliers`, {
       nombre: datos.nombre,
       telefono: datos.telefono,
       direccion: datos.direccion,
