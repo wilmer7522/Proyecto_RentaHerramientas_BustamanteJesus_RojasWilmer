@@ -625,6 +625,71 @@ const cancelarEdicion = (id) => {
 // ➕ Agregar nuevo cliente
 // ===============================
 
+const nuevoCliente = ref({
+  nombre: '',
+  apellido: '',
+  correo: '',
+  telefono: '',
+  direccion: '',
+  cedula: ''
+})
+
+const erroresCliente = ref({
+  nombre: '',
+  apellido: '',
+  correo: '',
+  telefono: '',
+  direccion: '',
+  cedula: ''
+})
+
+// 🔒 Computado que determina si el formulario es inválido
+const formularioInvalido = computed(() => {
+  const camposVacios = Object.values(nuevoCliente.value).some(valor => !valor)
+  const hayErrores = Object.values(erroresCliente.value).some(error => error)
+  return camposVacios || hayErrores
+})
+
+// Validación en tiempo real
+watch(nuevoCliente, (nuevo) => {
+  erroresCliente.value.nombre = !nuevo.nombre
+    ? 'El nombre es obligatorio'
+    : nuevo.nombre.length > 50
+      ? 'Máximo 50 caracteres'
+      : ''
+
+  erroresCliente.value.apellido = !nuevo.apellido
+    ? 'El apellido es obligatorio'
+    : nuevo.apellido.length > 50
+      ? 'Máximo 50 caracteres'
+      : ''
+
+  erroresCliente.value.correo = !nuevo.correo
+    ? 'El correo es obligatorio'
+    : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nuevo.correo)
+      ? 'Formato de correo inválido'
+      : ''
+
+  erroresCliente.value.telefono = !nuevo.telefono
+    ? 'El teléfono es obligatorio'
+    : !/^\d{7,15}$/.test(nuevo.telefono)
+      ? 'Debe contener entre 7 y 15 dígitos'
+      : ''
+
+  erroresCliente.value.direccion = !nuevo.direccion
+    ? 'La dirección es obligatoria'
+    : nuevo.direccion.length > 100
+      ? 'Máximo 100 caracteres'
+      : ''
+
+  erroresCliente.value.cedula = !nuevo.cedula
+    ? 'La cédula es obligatoria'
+    : !/^\d{5,15}$/.test(nuevo.cedula)
+      ? 'Debe tener entre 5 y 15 dígitos numéricos'
+      : ''
+}, { deep: true })
+
+// Envío del formulario
 const agregarCliente = async () => {
   const datos = nuevoCliente.value
 
@@ -636,29 +701,18 @@ const agregarCliente = async () => {
   }
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/client`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nombre: datos.nombre,
-        apellido: datos.apellido,
-        correo: datos.correo,
-        telefono: datos.telefono,
-        direccion: datos.direccion,
-        cedula: datos.cedula,
-        password: 'default123',
-        idRol: 3
-      })
+    await axios.post(`${process.env.VITE_API_URL}/auth/client`, {
+      nombre: datos.nombre,
+      apellido: datos.apellido,
+      correo: datos.correo,
+      telefono: datos.telefono,
+      direccion: datos.direccion,
+      cedula: datos.cedula,
+      password: 'default123',
+      idRol: 3
     })
 
-    if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(errorData.message || 'Error al agregar cliente')
-    }
-
-    // Limpiar el formulario después del envío exitoso
+    // Limpiar formulario
     nuevoCliente.value = {
       nombre: '',
       apellido: '',
@@ -670,10 +724,9 @@ const agregarCliente = async () => {
 
     obtenerClientes()
   } catch (error) {
-    alert('Error al agregar cliente: ' + error.message)
+    alert('Error al agregar cliente: ' + (error.response?.data?.message || error.message))
   }
 }
-
 
 
 
