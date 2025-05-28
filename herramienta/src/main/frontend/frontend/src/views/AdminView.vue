@@ -506,7 +506,7 @@ const clientes = ref([])
 // Obtener todos los clientes
 const obtenerClientes = async () => {
   try {
-    const response = await axios.get('${process.env.VUE_APP_API_URL}/auth/client')
+    const response = await axios.get('${apiUrl}/auth/client')
     clientes.value = response.data
   } catch (error) {
     console.error('Error al obtener clientes:', error)
@@ -581,7 +581,7 @@ const editarCliente = (id) => {
 // Guardar cambios del cliente editado
 const guardarCambios = async (cliente) => {
   try {
-    await axios.patch(`${process.env.VUE_APP_API_URL}/auth/client/${cliente.id}`, cliente)
+    await axios.patch(`${apiUrl}/auth/client/${cliente.id}`, cliente)
     editando.value = null
     await obtenerClientes()
 
