@@ -752,7 +752,7 @@ const filtroProveedor = ref('')
 const editandoProveedor = ref(null)
 const proveedorOriginal = ref(null)
 
-const apiUrl = import.meta.env.VITE_API_URL
+const apiUrl = "https://rentaherramientas-bustamantejesus.onrender.com"
 
 async function obtenerProveedores() {
   try {
@@ -1062,7 +1062,7 @@ const totalPaginasPago = computed(() => {
 
 const obtenerPagos = async () => {
   try {
-    const response = await fetch(`${process.env.VUE_APP_API_URL}/service/pago`);
+    const response = await fetch(`${apiUrl}/service/pago`);
     if (!response.ok) {
       throw new Error("Error al obtener los pagos");
     }
