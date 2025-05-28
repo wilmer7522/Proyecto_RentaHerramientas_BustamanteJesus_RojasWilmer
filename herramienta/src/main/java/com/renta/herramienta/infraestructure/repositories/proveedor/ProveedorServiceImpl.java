@@ -75,6 +75,7 @@ public class ProveedorServiceImpl implements ProveedorService {
         rolProveedor.setId(request.getIdRol());
         Proveedor proveedor = new Proveedor();
         proveedor.setNombre(request.getNombre());
+        proveedor.setPassword(request.getPassword());
         proveedor.setTelefono(request.getTelefono());
         proveedor.setCorreo(request.getCorreo());
         proveedor.setDireccion(request.getDireccion());
