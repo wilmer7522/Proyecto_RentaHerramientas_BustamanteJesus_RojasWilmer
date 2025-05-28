@@ -21,7 +21,7 @@ import com.renta.herramienta.domain.entities.Alquiler;
 import com.renta.herramienta.domain.mapper.AlquilerMapper;
 import com.renta.herramienta.domain.request.AlquilerRequest;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/service")
 public class AlquilerController {

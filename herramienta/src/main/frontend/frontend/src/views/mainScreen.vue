@@ -8,7 +8,7 @@
         <input v-model="filtro" id="categoria" type="text" placeholder="Herramientas" />
         <button id="buttonherramienta" @click="cargarHerramientas">Buscar</button>
 
-        <a id="redireccion" href="http://localhost:5173/admin">
+        <a id="redireccion" href="https://prueba-eta-rouge.vercel.app/admin">
           <div class="iconheader">
             <button id="login">Iniciar Sesión</button>
           </div>

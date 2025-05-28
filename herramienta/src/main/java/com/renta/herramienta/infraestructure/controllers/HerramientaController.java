@@ -21,7 +21,7 @@ import com.renta.herramienta.aplication.service.HerramientaService;
 import com.renta.herramienta.domain.entities.EstadoHerramienta;
 import com.renta.herramienta.domain.entities.Herramienta;
 
-@CrossOrigin(origins = "http://localhost:5173") // Puerto de Vite
+@CrossOrigin(origins = "*") // Puerto de Vite
 @RestController
 @RequestMapping(value = "/tools", produces = MediaType.APPLICATION_JSON_VALUE)
 public class HerramientaController {

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.renta.herramienta.aplication.service.CategoriaHerramientaService;
 import com.renta.herramienta.domain.entities.CategoriaHerramienta;
 
-@CrossOrigin(origins = "http://localhost:5173") // Puerto de Vite
+@CrossOrigin(origins = "*") // Puerto de Vite
 @RestController
 @RequestMapping("/api/categorias")
 public class CategoriaHerramientaController {

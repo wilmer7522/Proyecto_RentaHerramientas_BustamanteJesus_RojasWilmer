@@ -26,7 +26,7 @@ import com.renta.herramienta.domain.request.ProveedorUpdateRequest;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:5173/admin")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProveedorController {

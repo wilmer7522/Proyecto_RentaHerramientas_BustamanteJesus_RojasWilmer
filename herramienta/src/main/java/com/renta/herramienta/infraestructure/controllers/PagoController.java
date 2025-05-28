@@ -21,7 +21,7 @@ import com.renta.herramienta.domain.request.PagoRequest;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:5173/admin")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/service")
 public class PagoController {
