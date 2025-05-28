@@ -701,7 +701,7 @@ const agregarCliente = async () => {
   }
 
   try {
-    await axios.post(`${process.env.VITE_API_URL}/auth/client`, {
+    await axios.post(`${import.meta.env.VITE_API_URL}/auth/client`, {
       nombre: datos.nombre,
       apellido: datos.apellido,
       correo: datos.correo,
