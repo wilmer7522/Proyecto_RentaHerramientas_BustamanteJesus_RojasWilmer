@@ -79,6 +79,7 @@ public class ProveedorServiceImpl implements ProveedorService {
         proveedor.setTelefono(request.getTelefono());
         proveedor.setCorreo(request.getCorreo());
         proveedor.setDireccion(request.getDireccion());
+        proveedor.setNit(request.getNit());
         proveedor.setRol(rolProveedor);
 
         Proveedor guardado = proveedorRepository.save(proveedor);

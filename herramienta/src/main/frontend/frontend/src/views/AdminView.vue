@@ -549,7 +549,7 @@ const eliminarCliente = async (id) => {
     })
 
     if (result.isConfirmed) {
-      await axios.delete(`${process.env.VITE_API_URL}/auth/client/${id}`)
+      await axios.delete(`${import.meta.env.VITE_API_URL}/auth/client/${id}`)
       await obtenerClientes()
 
       Swal.fire({
