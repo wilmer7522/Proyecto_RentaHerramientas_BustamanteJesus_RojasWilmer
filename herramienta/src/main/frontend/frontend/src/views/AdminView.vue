@@ -469,6 +469,7 @@ import reporte from '../assets/icons/chart-line.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
+const apiUrl = "https://rentaherramientas-bustamantejesus.onrender.com"
 
 // ===============================
 // 🔧 Estados globales de interfaz
@@ -506,8 +507,17 @@ const clientes = ref([])
 // Obtener todos los clientes
 const obtenerClientes = async () => {
   try {
-    const response = await axios.get('${apiUrl}/auth/client')
-    clientes.value = response.data
+    const response = await fetch(`${apiUrl}/auth/client`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`)
+    }
+
+    clientes.value = await response.json()
   } catch (error) {
     console.error('Error al obtener clientes:', error)
   }
@@ -751,8 +761,6 @@ const filtroProveedor = ref('')
 
 const editandoProveedor = ref(null)
 const proveedorOriginal = ref(null)
-
-const apiUrl = "https://rentaherramientas-bustamantejesus.onrender.com"
 
 async function obtenerProveedores() {
   try {
