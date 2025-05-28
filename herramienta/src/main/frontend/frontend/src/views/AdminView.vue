@@ -549,7 +549,7 @@ const eliminarCliente = async (id) => {
     })
 
     if (result.isConfirmed) {
-      await axios.delete(`${process.env.VUE_APP_API_URL}/auth/client/${id}`)
+      await axios.delete(`${process.env.VITE_API_URL}/auth/client/${id}`)
       await obtenerClientes()
 
       Swal.fire({
@@ -701,7 +701,7 @@ const agregarCliente = async () => {
   }
 
   try {
-    await axios.post(`${process.env.VUE_APP_API_URL}/auth/client`, {
+    await axios.post(`${process.env.VITE_API_URL}/auth/client`, {
       nombre: datos.nombre,
       apellido: datos.apellido,
       correo: datos.correo,
@@ -837,7 +837,7 @@ const agregarProveedor = async () => {
   }
 
   try {
-    await axios.post(`${process.env.VUE_APP_API_URL}/auth/suppliers`, {
+    await axios.post(`${import.meta.VITE_API_URL}/auth/suppliers`, {
       nombre: datos.nombre,
       telefono: datos.telefono,
       direccion: datos.direccion,
@@ -880,7 +880,7 @@ const eliminarProveedor = async (id) => {
     })
 
     if (result.isConfirmed) {
-      await axios.delete(`${process.env.VUE_APP_API_URL}/auth/suppliers/${id}`)
+      await axios.delete(`${process.env.VITE_API_URL}/auth/suppliers/${id}`)
       obtenerProveedores()
       Swal.fire('¡Eliminado!', 'El proveedor fue eliminado correctamente.', 'success')
     }
@@ -916,7 +916,7 @@ const guardarCambiosProveedor = async (proveedor) => {
 
   try {
     console.log('Proveedor enviado:', proveedor)
-    await axios.patch(`${process.env.VUE_APP_API_URL}/auth/suppliers/${proveedor.id}`, proveedorUpdateRequest)
+    await axios.patch(`${process.env.VITE_API_URL}/auth/suppliers/${proveedor.id}`, proveedorUpdateRequest)
     editandoProveedor.value = null
     obtenerProveedores()
     Swal.fire('Proveedor actualizado', 'Los datos se guardaron correctamente.', 'success')
@@ -1030,7 +1030,7 @@ const totalPaginasReporte = computed(() => {
 
 const obtenerReportesDano = async () => {
   try {
-    const response = await fetch(`${process.env.VUE_APP_API_URL}/service/reportes-dano`);
+    const response = await fetch(`${process.env.VITE_API_URL}/service/reportes-dano`);
     if (!response.ok) {
       throw new Error("Error al obtener reportes de daño");
     }
