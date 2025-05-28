@@ -753,9 +753,6 @@ const clientesPaginados = computed(() => {
 });
 
 
-/* --------------------------------------------
-   🔸 Variables y estado reactivo
--------------------------------------------- */
 const proveedores = ref([])
 const filtroProveedor = ref('')
 
@@ -764,7 +761,7 @@ const proveedorOriginal = ref(null)
 
 const obtenerProveedores = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/auth/suppliers`)
+    const response = await axios.get(`/auth/suppliers`)
     console.log('Alquileres:', response.data)
     proveedores.value = response.data
   } catch (error) {
