@@ -843,10 +843,10 @@ const agregarProveedor = async () => {
       direccion: datos.direccion,
       nit: datos.nit,
       correo: datos.correo,
-      password: 'default123'
+      password: 'default123',
+      idRol: 2
     })
 
-    // Limpiar formulario
     nuevoProveedor.value = {
       nombre: '',
       telefono: '',
