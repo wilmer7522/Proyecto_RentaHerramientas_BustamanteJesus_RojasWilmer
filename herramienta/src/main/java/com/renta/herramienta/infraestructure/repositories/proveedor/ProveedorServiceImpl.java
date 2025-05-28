@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.renta.herramienta.aplication.service.ProveedorService;
 import com.renta.herramienta.domain.dto.ProveedorDTO;
+import com.renta.herramienta.domain.entities.Cliente;
 import com.renta.herramienta.domain.entities.Proveedor;
 import com.renta.herramienta.domain.entities.Rol;
 import com.renta.herramienta.domain.mapper.ProveedorMapper;
+import com.renta.herramienta.domain.request.ClienteRequest;
 import com.renta.herramienta.domain.request.ProveedorRequest;
 import com.renta.herramienta.domain.request.ProveedorUpdateRequest;
 
@@ -64,12 +66,13 @@ public class ProveedorServiceImpl implements ProveedorService {
         }
     }
 
+
     @Override
     public ProveedorDTO createNewProveedorDTO(ProveedorRequest request) {
 
         // Obtener rol
         Rol rolProveedor = new Rol();
-        rolProveedor.setId(2L);
+        rolProveedor.setId(request.getIdRol());
         Proveedor proveedor = new Proveedor();
         proveedor.setNombre(request.getNombre());
         proveedor.setTelefono(request.getTelefono());
