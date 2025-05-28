@@ -13,7 +13,7 @@ import com.renta.herramienta.infraestructure.repositories.reporteDano.ReporteDan
 
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5173/admin")
 @RestController
 @RequestMapping("/service/reportes-dano")
 @RequiredArgsConstructor

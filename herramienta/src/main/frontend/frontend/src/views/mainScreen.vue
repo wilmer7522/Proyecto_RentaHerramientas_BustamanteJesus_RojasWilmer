@@ -193,7 +193,7 @@ function anteriorPagina() {
 
 // Cargar herramientas desde el backend
 async function cargarHerramientas() {
-  let url = 'http://localhost:8080/tools'
+  let url = `${process.env.VUE_APP_API_URL}/tools`
 
   try {
     // Si hay filtro por nombre
@@ -223,7 +223,7 @@ async function cargarHerramientas() {
 // Cargar categorías
 async function cargarCategorias() {
   try {
-    const res = await fetch('http://localhost:8080/api/categorias')
+    const res = await fetch(`${process.env.VUE_APP_API_URL}/api/categorias`)
     categorias.value = await res.json()
   } catch (error) {
     console.error('Error al cargar categorías:', error)

@@ -506,7 +506,7 @@ const clientes = ref([])
 // Obtener todos los clientes
 const obtenerClientes = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/auth/client')
+    const response = await axios.get('${process.env.VUE_APP_API_URL}/auth/client')
     clientes.value = response.data
   } catch (error) {
     console.error('Error al obtener clientes:', error)
@@ -539,7 +539,7 @@ const eliminarCliente = async (id) => {
     })
 
     if (result.isConfirmed) {
-      await axios.delete(`http://localhost:8080/auth/client/${id}`)
+      await axios.delete(`${process.env.VUE_APP_API_URL}/auth/client/${id}`)
       await obtenerClientes()
 
       Swal.fire({
@@ -581,7 +581,7 @@ const editarCliente = (id) => {
 // Guardar cambios del cliente editado
 const guardarCambios = async (cliente) => {
   try {
-    await axios.patch(`http://localhost:8080/auth/client/${cliente.id}`, cliente)
+    await axios.patch(`${process.env.VUE_APP_API_URL}/auth/client/${cliente.id}`, cliente)
     editando.value = null
     await obtenerClientes()
 
@@ -691,7 +691,7 @@ const agregarCliente = async () => {
   }
 
   try {
-    await axios.post('http://localhost:8080/auth/client', {
+    await axios.post(`${process.env.VUE_APP_API_URL}/auth/client`, {
       nombre: datos.nombre,
       apellido: datos.apellido,
       correo: datos.correo,
@@ -754,7 +754,7 @@ const proveedorOriginal = ref(null)
 
 const obtenerProveedores = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/auth/suppliers')
+    const response = await axios.get(`${process.env.VUE_APP_API_URL}/auth/suppliers`)
     proveedores.value = response.data
   } catch (error) {
     console.error('Error al obtener proveedores:', error)
@@ -829,7 +829,7 @@ const agregarProveedor = async () => {
   }
 
   try {
-    await axios.post('http://localhost:8080/auth/suppliers', {
+    await axios.post(`${process.env.VUE_APP_API_URL}/auth/suppliers`, {
       nombre: datos.nombre,
       telefono: datos.telefono,
       direccion: datos.direccion,
@@ -872,7 +872,7 @@ const eliminarProveedor = async (id) => {
     })
 
     if (result.isConfirmed) {
-      await axios.delete(`http://localhost:8080/auth/suppliers/${id}`)
+      await axios.delete(`${process.env.VUE_APP_API_URL}/auth/suppliers/${id}`)
       obtenerProveedores()
       Swal.fire('¡Eliminado!', 'El proveedor fue eliminado correctamente.', 'success')
     }
@@ -908,7 +908,7 @@ const guardarCambiosProveedor = async (proveedor) => {
 
   try {
     console.log('Proveedor enviado:', proveedor)
-    await axios.patch(`http://localhost:8080/auth/suppliers/${proveedor.id}`, proveedorUpdateRequest)
+    await axios.patch(`${process.env.VUE_APP_API_URL}/auth/suppliers/${proveedor.id}`, proveedorUpdateRequest)
     editandoProveedor.value = null
     obtenerProveedores()
     Swal.fire('Proveedor actualizado', 'Los datos se guardaron correctamente.', 'success')
@@ -953,7 +953,7 @@ const filtroAlquileres = ref('')
 // Obtener todos los alquileres
 const obtenerAlquileres = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/service/alquileres')
+    const response = await axios.get(`${process.env.VUE_APP_API_URL}/service/alquileres`)
     console.log('Alquileres:', response.data)
     alquileres.value = response.data
   } catch (error) {
@@ -1024,7 +1024,7 @@ const totalPaginasReporte = computed(() => {
 
 const obtenerReportesDano = async () => {
   try {
-    const response = await fetch("http://localhost:8080/service/reportes-dano");
+    const response = await fetch(`${process.env.VUE_APP_API_URL}/service/reportes-dano`);
     if (!response.ok) {
       throw new Error("Error al obtener reportes de daño");
     }
@@ -1061,7 +1061,7 @@ const totalPaginasPago = computed(() => {
 
 const obtenerPagos = async () => {
   try {
-    const response = await fetch("http://localhost:8080/service/pago");
+    const response = await fetch(`${process.env.VUE_APP_API_URL}/service/pago`);
     if (!response.ok) {
       throw new Error("Error al obtener los pagos");
     }
