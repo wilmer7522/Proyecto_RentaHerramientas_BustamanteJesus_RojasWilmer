@@ -761,7 +761,7 @@ const proveedorOriginal = ref(null)
 
 const obtenerProveedores = async () => {
   try {
-    const response = await axios.get(`/auth/suppliers`)
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/auth/suppliers`)
     console.log('Alquileres:', response.data)
     proveedores.value = response.data
   } catch (error) {
