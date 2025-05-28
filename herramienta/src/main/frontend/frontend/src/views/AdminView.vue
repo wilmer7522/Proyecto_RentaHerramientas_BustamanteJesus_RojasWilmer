@@ -970,7 +970,7 @@ const filtroAlquileres = ref('')
 // Obtener todos los alquileres
 const obtenerAlquileres = async () => {
   try {
-    const response = await axios.get(`${process.env.VUE_APP_API_URL}/service/alquileres`)
+    const response = await axios.get(`${apiUrl}/service/alquileres`)
     console.log('Alquileres:', response.data)
     alquileres.value = response.data
   } catch (error) {
