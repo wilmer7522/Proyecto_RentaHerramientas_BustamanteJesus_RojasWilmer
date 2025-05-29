@@ -762,7 +762,7 @@ const proveedorOriginal = ref(null)
 const obtenerProveedores = async () => {
   try {
     const response = await axios.get(`${import.meta.env.VITE_API_URL}/auth/suppliers`)
-    console.log('Alquileres:', response.data)
+
     proveedores.value = response.data
   } catch (error) {
     console.error('Error al obtener alquileres:', error)
@@ -866,8 +866,6 @@ const agregarProveedor = async () => {
   }
 }
 
-
-
 const eliminarProveedor = async (id) => {
   try {
     const result = await Swal.fire({
@@ -926,8 +924,6 @@ const guardarCambiosProveedor = async (proveedor) => {
   }
 }
 
-
-
 const proveedoresFiltrados = computed(() => {
   return proveedores.value.filter(proveedor => {
     const termino = filtroProveedor.value.toLowerCase()
@@ -937,9 +933,6 @@ const proveedoresFiltrados = computed(() => {
     )
   })
 })
-
-
-
 
 const paginaProveedor = ref(1)
 const proveedoresPorPagina = 5
@@ -1030,7 +1023,7 @@ const totalPaginasReporte = computed(() => {
 
 const obtenerReportesDano = async () => {
   try {
-    const response = await fetch(`${process.env.VITE_API_URL}/service/reportes-dano`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/service/reportes-dano`);
     if (!response.ok) {
       throw new Error("Error al obtener reportes de daño");
     }
