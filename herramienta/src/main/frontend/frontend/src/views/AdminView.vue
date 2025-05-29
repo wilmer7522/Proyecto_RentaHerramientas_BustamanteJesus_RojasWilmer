@@ -761,19 +761,22 @@ const proveedorOriginal = ref(null)
 
 const obtenerProveedores = async () => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/suppliers`)
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/suppliers`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
 
     if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(errorData.message || 'Error al obtener proveedores')
+      throw new Error(`Error HTTP: ${response.status}`)
     }
 
-    const data = await response.json()
-    proveedores.value = data
+    proveedores.value = await response.json()
   } catch (error) {
-    console.error('Error al obtener proveedores:', error.message)
+    console.error('Error al obtener proveedores:', error)
   }
 }
+
 
 
 const nuevoProveedor = ref({
