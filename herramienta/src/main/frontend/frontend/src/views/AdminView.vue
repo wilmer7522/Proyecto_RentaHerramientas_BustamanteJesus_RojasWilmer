@@ -878,7 +878,7 @@ const eliminarProveedor = async (id) => {
     })
 
     if (result.isConfirmed) {
-      await axios.delete(`${process.env.VITE_API_URL}/auth/suppliers/${id}`)
+      await axios.delete(`${import.meta.env.VITE_API_URL}/auth/suppliers/${id}`)
       obtenerProveedores()
       Swal.fire('¡Eliminado!', 'El proveedor fue eliminado correctamente.', 'success')
     }
@@ -914,7 +914,7 @@ const guardarCambiosProveedor = async (proveedor) => {
 
   try {
     console.log('Proveedor enviado:', proveedor)
-    await axios.patch(`${process.env.VITE_API_URL}/auth/suppliers/${proveedor.id}`, proveedorUpdateRequest)
+    await axios.patch(`${import.meta.env.VITE_API_URL}/auth/suppliers/${proveedor.id}`, proveedorUpdateRequest)
     editandoProveedor.value = null
     obtenerProveedores()
     Swal.fire('Proveedor actualizado', 'Los datos se guardaron correctamente.', 'success')
