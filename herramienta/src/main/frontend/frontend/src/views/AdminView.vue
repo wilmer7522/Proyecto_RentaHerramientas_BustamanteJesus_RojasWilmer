@@ -935,14 +935,16 @@ const guardarCambiosProveedor = async (proveedor) => {
 }
 
 const proveedoresFiltrados = computed(() => {
+  const termino = filtroProveedor.value.toLowerCase()
   return proveedores.value.filter(proveedor => {
-    const termino = filtroProveedor.value.toLowerCase()
     return (
-      proveedor.nombre?.toLowerCase().includes(termino) ||
-      proveedor.nit?.toLowerCase().includes(termino)
+      (proveedor.nombre || '').toLowerCase().includes(termino) ||
+      (proveedor.nit || '').toLowerCase().includes(termino)
     )
   })
 })
+
+
 
 const paginaProveedor = ref(1)
 const proveedoresPorPagina = 5
@@ -953,6 +955,11 @@ const proveedoresFiltradosPaginados = computed(() => {
   const inicio = (paginaProveedor.value - 1) * proveedoresPorPagina
   const fin = inicio + proveedoresPorPagina
   return filtrados.slice(inicio, fin)
+})
+
+
+onMounted(() => {
+  obtenerProveedores()
 })
 
 
